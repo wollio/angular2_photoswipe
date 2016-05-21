@@ -1,4 +1,4 @@
-<div class="my-gallery" itemscope itemtype="http://schema.org/ImageGallery">
+<div class="angular2_photoswipe" itemscope itemtype="http://schema.org/ImageGallery">
   <figure itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject" *ngFor="#image of m_images | async">
     <a href="{{image.largeUrl}}" itemprop="contentUrl" data-size="" (click)="openImage(image)">
       <img src="{{image.thumbUrl}}" itemprop="thumbnail" alt="{{image.description}}" />

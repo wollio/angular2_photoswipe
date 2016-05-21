@@ -8,8 +8,8 @@ declare var PhotoSwipeUI_Default: any;
 
 @Component({
   selector: 'lightbox',
-  templateUrl: 'app/components/shared/lightbox/lightbox.template.html',
-  styleUrls: ['app/components/shared/lightbox/lightbox.style.css'],
+  templateUrl: './lightbox.template.html',
+  styleUrls: ['./assets/css/lightbox.style.css'],
   providers: [],
   directives: [],
   pipes: []
@@ -23,7 +23,7 @@ export class Lightbox {
   }
 
   openImage(img : Image) {
-    this.openPhotoSwipe(img, document.getElementsByClassName('my-gallery')[0]);
+    this.openPhotoSwipe(img, document.getElementsByClassName('angular2_photoswipe')[0]);
     return false;
   }
 
