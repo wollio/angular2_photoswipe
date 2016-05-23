@@ -17,17 +17,17 @@ var tsProject = ts.createProject(tsConfig.compilerOptions);
 //copy dependencies to dist folder
 gulp.task('copy:deps', function(){
   return gulp.src([
-    'node_modules/photoswipe/dist/photoswipe.js',
-    'node_modules/photoswipe/dist/photoswipe-ui-default.js'
+    '../photoswipe/dist/photoswipe.js',
+    '../photoswipe/dist/photoswipe-ui-default.js'
   ]).pipe(gulp.dest('dist/vendor'));
 });
 
 //copy html/css/js files
 gulp.task('copy:media', function(){
   return gulp.src([
-    'node_modules/photoswipe/src/css/default-skin/*.png',
-    'node_modules/photoswipe/src/css/default-skin/*.svg',
-    'node_modules/photoswipe/src/css/default-skin/*.gif'
+    '../photoswipe/src/css/default-skin/*.png',
+    '../photoswipe/src/css/default-skin/*.svg',
+    '../photoswipe/src/css/default-skin/*.gif'
   ])
   .pipe(gulp.dest('dist/assets/media'));
 });
