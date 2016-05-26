@@ -4,7 +4,6 @@ var util = require('gulp-util');
 var SystemBuilder = require('systemjs-builder');
 var watch = require('gulp-watch');
 var ts = require('gulp-typescript');
-var tsConfig = require('./tsconfig.json');
 var rimraf = require('gulp-rimraf');
 var sass = require('gulp-sass');
 var concat = require('gulp-concat');
@@ -12,22 +11,22 @@ var tap = require('gulp-tap');
 var fs = require('fs');
 
 //Typescript Config;
-var tsProject = ts.createProject(tsConfig.compilerOptions);
+var tsProject = ts.createProject('tsconfig.json');
 
 //copy dependencies to dist folder
 gulp.task('copy:deps', function(){
   return gulp.src([
-    '../photoswipe/dist/photoswipe.js',
-    '../photoswipe/dist/photoswipe-ui-default.js'
+    'node_modules/photoswipe/dist/photoswipe.js',
+    'node_modules/photoswipe/dist/photoswipe-ui-default.js'
   ]).pipe(gulp.dest('dist/vendor'));
 });
 
 //copy html/css/js files
 gulp.task('copy:media', function(){
   return gulp.src([
-    '../photoswipe/src/css/default-skin/*.png',
-    '../photoswipe/src/css/default-skin/*.svg',
-    '../photoswipe/src/css/default-skin/*.gif'
+    'node_modules/photoswipe/src/css/default-skin/*.png',
+    'node_modules/photoswipe/src/css/default-skin/*.svg',
+    'node_modules/photoswipe/src/css/default-skin/*.gif'
   ])
   .pipe(gulp.dest('dist/assets/media'));
 });
@@ -40,10 +39,18 @@ gulp.task('copy:html', function() {
 })
 
 //compile app typescript files
-gulp.task('compile:app', function(){
-  return gulp.src(['src/**/*.ts', 'typings/browser/**/*.d.ts'])
-    .pipe(ts(tsProject))
-    .pipe(gulp.dest('./dist'));
+gulp.task('compile:app', ['compile:app:definition'], function(){
+  var tsResult = tsProject.src() // instead of gulp.src(...)
+		.pipe(ts(tsProject));
+
+	return tsResult.js.pipe(gulp.dest('dist'));
+});
+
+gulp.task('compile:app:definition', function(){
+  var tsResult = tsProject.src() // instead of gulp.src(...)
+		.pipe(ts(tsProject));
+
+	return tsResult.dts.pipe(gulp.dest('dist'));
 });
 
 gulp.task('compile:sass', function () {

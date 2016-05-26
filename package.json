@@ -1,12 +1,13 @@
 {
   "name": "angular2_photoswipe",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "An angular2 component for photoswipe",
   "main": "index.js",
   "scripts": {
     "start": "gulp",
     "postinstall": "typings install && gulp",
     "typings": "typings",
+    "tsc": "tsc",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -25,11 +26,11 @@
   },
   "homepage": "https://github.com/wollio/angular2_photoswipe#readme",
   "peerDependencies": {
-    "angular2": "^2.0.0-beta.16",
-    "rxjs": "^5.0.0-beta.2",
-    "zone.js": "^0.6.12"
   },
   "dependencies": {
+    "angular2": "^2.0.0-beta.16",
+    "rxjs": "^5.0.0-beta.2",
+    "zone.js": "^0.6.12",
     "photoswipe": "^4.1.1"
   },
   "devDependencies": {

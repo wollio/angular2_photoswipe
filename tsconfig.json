@@ -9,7 +9,8 @@
     "declaration": true,
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
-    "moduleResolution": "node"
+    "moduleResolution": "node",
+    "removeComments": true
   },
   "exclude": [
     "typings/browser.d.ts",
