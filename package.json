@@ -1,6 +1,6 @@
 {
   "name": "angular2_photoswipe",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "description": "An angular2 component for photoswipe",
   "main": "index.js",
   "scripts": {

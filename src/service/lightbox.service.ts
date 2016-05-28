@@ -2,7 +2,7 @@ import {Injectable} from 'angular2/core';
 import { Observable } from 'rxjs/Observable';
 import { Observer } from 'rxjs/Observer';
 import 'rxjs/add/operator/share';
-import {Image} from './image.model';
+import {Image} from '../model/image.model';
 
 @Injectable()
 export class LightboxService {
