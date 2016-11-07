@@ -1,4 +1,4 @@
-import {Component} from '@angular2/core';
+import {Component} from '@angular/core';
 import {Image} from '../model/image.model';
 import {Observable} from 'rxjs/Observable';
 import {LightboxService} from '../service/lightbox.service';
@@ -9,10 +9,7 @@ declare var PhotoSwipeUI_Default: any;
 @Component({
   selector: 'lightbox',
   templateUrl: '../lightbox.template.html',
-  styleUrls: ['../assets/css/lightbox.style.css'],
-  providers: [],
-  directives: [],
-  pipes: []
+  styleUrls: ['../assets/css/lightbox.style.css']
 })
 export class Lightbox {
 
