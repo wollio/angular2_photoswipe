@@ -1,20 +1,12 @@
 {
-  "compilerOptions": {
-    "module": "commonjs",
-    "target": "es5",
-    "noImplicitAny": false,
-    "outDir": "dist",
-    "rootDir": "src",
-    "sourceMap": true,
-    "declaration": true,
-    "emitDecoratorMetadata": true,
-    "experimentalDecorators": true,
-    "moduleResolution": "node",
-    "removeComments": true
-  },
-  "exclude": [
-    "typings/browser.d.ts",
-    "typings/browser",
-    "node_modules"
-  ]
+    "compilerOptions": {
+        "noImplicitAny": true,
+        "module": "commonjs",
+        "target": "ES5",
+        "emitDecoratorMetadata": true,
+        "experimentalDecorators": true,
+        "declaration": true,
+        "moduleResolution": "node",
+        "sourceMap": true
+    }
 }
