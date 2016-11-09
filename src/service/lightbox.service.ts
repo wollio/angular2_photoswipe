@@ -1,43 +1,39 @@
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs/Observable';
-import { Observer } from 'rxjs/Observer';
-import 'rxjs/add/operator/share';
 import {Image} from '../model/image.model';
 
 @Injectable()
 export class LightboxService {
 
-  m_images: Observable<Image[]>;
-  private m_imagesObserver: Observer<Image[]>;
-  private m_imagesData : Image[];
+  gallery:{ [key:string]:Image[] } = {};
 
   constructor() {
-    this.m_images = new Observable(observer => this.m_imagesObserver = observer).share();
+
   }
 
-  public setImages(images:Image[]) {
-    this.m_imagesData = images;
-    this.refresh();
+  public createGallery(key:string) {
+    this.gallery[key] = [];
   }
 
-  public addImage(image:Image) {
-    this.m_imagesData.push(image);
-    this.refresh();
+  public setImages(key:string, images:Image[]) {
+    this.gallery[key] = images;
   }
 
-  public getImages() : Image[] {
-    return this.m_imagesData;
+  public addImage(key:string, image:Image) {
+    if (key in this.gallery ) {
+      this.gallery[key].push(image);
+    } else {
+      throw new Error(`gallery '${key}' does not exist`);
+    }
   }
 
-  public removeImage(id:number) {
-    this.m_imagesData.forEach((img, index) => {
-        if (img.id === id) { this.m_imagesData.splice(index, 1); }
+  public getImages(key:string) : Image[] {
+    return this.gallery[key];
+  }
+
+  public removeImage(key:string, id:number) {
+    this.gallery[key].forEach((img, index) => {
+        if (img.id === id) { this.gallery[key].splice(index, 1); }
     });
-    this.refresh();
-  }
-
-  private refresh() {
-    this.m_imagesObserver.next(this.m_imagesData);
   }
 
 }

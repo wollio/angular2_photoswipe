@@ -12,7 +12,9 @@ var config = {
   map: {
     'typescript': './node_modules/typescript/lib/typescript.js',
     '@angular': path.resolve('node_modules/@angular'),
-    'rxjs': path.resolve('node_modules/rxjs')
+    'rxjs': path.resolve('node_modules/rxjs'),
+    'photoswipe': './node_modules/photoswipe/dist/photoswipe.js',
+    'photoswipeui': './node_modules/photoswipe/dist/photoswipe-ui-default.js'
   },
   paths: {
     '*': '*.js'
@@ -24,7 +26,12 @@ var config = {
 };
 
 builder.config(config);
-
+builder.buildStatic('photoswipe', 'photoswipe.js', {
+  globalName: 'PhotoSwipe'
+});
+builder.buildStatic('photoswipeui', 'photoswipeui.js', {
+  globalName: 'PhotoSwipeUI_Default'
+});
 builder
 .bundle('index', path.resolve(__dirname, 'bundles/', pkg.name + '.js'))
 .then(function() {
