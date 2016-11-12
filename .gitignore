@@ -15,3 +15,6 @@ Thumbs.db
 
 # IDE
 .idea/
+
+# Built files
+default-skin.css
