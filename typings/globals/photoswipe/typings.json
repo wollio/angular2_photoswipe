@@ -1,0 +1,8 @@
+{
+  "resolution": "main",
+  "tree": {
+    "src": "https://raw.githubusercontent.com/DefinitelyTyped/DefinitelyTyped/617c6cc9b588c56d600f55a35229c688ff149af0/photoswipe/photoswipe.d.ts",
+    "raw": "registry:dt/photoswipe#4.0.8+20160322011247",
+    "typings": "https://raw.githubusercontent.com/DefinitelyTyped/DefinitelyTyped/617c6cc9b588c56d600f55a35229c688ff149af0/photoswipe/photoswipe.d.ts"
+  }
+}

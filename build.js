@@ -45,14 +45,14 @@ photoswipeImages.forEach(function (img, index, array) {
 
 
 builder.config(config);
-builder.buildStatic('photoswipe', {
+builder.buildStatic('photoswipe', 'vendor/photoswipe.js', {
   globalName: 'PhotoSwipe'
 });
-builder.buildStatic('photoswipeui', {
+builder.buildStatic('photoswipeui', 'vendor/photoswipeui.js', {
   globalName: 'PhotoSwipeUI_Default'
 });
 builder
-.bundle('index', path.resolve(__dirname, 'bundles/', pkg.name + '.js'))
+.bundle('vendor/photoswipe & vendor/photoswipeui & index', path.resolve(__dirname, 'bundles/', pkg.name + '.js'))
 .then(function() {
   console.log('Build complete.');
 })
