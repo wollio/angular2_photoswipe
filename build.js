@@ -15,7 +15,7 @@ var config = {
     '@angular': path.resolve('node_modules/@angular'),
     'rxjs': path.resolve('node_modules/rxjs'),
     'photoswipe': './node_modules/photoswipe/dist/photoswipe.js',
-    'photoswipeui': './node_modules/photoswipe/dist/photoswipe-ui-default.js'
+    'PhotoSwipeUI_Default': './node_modules/photoswipe/dist/photoswipe-ui-default.js'
   },
   paths: {
     '*': '*.js'
@@ -48,7 +48,7 @@ builder.config(config);
 builder.buildStatic('photoswipe', 'vendor/photoswipe.js', {
   globalName: 'PhotoSwipe'
 });
-builder.buildStatic('photoswipeui', 'vendor/photoswipeui.js', {
+builder.buildStatic('PhotoSwipeUI_Default', 'vendor/photoswipeui.js', {
   globalName: 'PhotoSwipeUI_Default'
 });
 builder
