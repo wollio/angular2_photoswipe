@@ -11,6 +11,7 @@ Thumbs.db
 
 # necessary project files
 !config/*.js
+!webpack.config.js
 
 # IDE
 .idea/
