@@ -25,7 +25,7 @@
   "homepage": "https://github.com/wollio/angular2_photoswipe#readme",
   "peerDependencies": {
     "@angular/core": "^4.0.0",
-    "photoswipe": "^4.1.1"
+    "photoswipe": "4.1.2"
   },
   "module": "index.js",
   "devDependencies": {
@@ -38,7 +38,7 @@
     "@types/node": "^8.0.19",
     "@types/photoswipe": "^4.0.28",
     "awesome-typescript-loader": "^3.2.2",
-    "photoswipe": "^4.1.1",
+    "photoswipe": "4.1.2",
     "rxjs": "^5.4.0",
     "tslint": "^5.6.0",
     "tslint-loader": "^3.5.3",
