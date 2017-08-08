@@ -15,8 +15,7 @@ Thumbs.db
 
 # IDE
 .idea/
+*.iml
 
 # Built files
-default-skin.css
-
-angular2_photoswipe-0.0.7.tgz
+bundles/
