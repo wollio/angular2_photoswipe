@@ -10,8 +10,7 @@ Thumbs.db
 *.d.ts
 
 # necessary project files
-!build.js
-!systemjs.config.js
+!config/*.js
 
 # IDE
 .idea/
