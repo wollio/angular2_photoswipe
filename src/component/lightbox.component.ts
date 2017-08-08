@@ -751,7 +751,7 @@ export class Lightbox {
     options.galleryUID = galleryDOM.getAttribute('data-pswp-uid');
     options.index = img.id;
     const PSWP:HTMLElement = <HTMLElement> document.querySelectorAll('.pswp')[0];
-    new PhotoSwipe(PSWP, PhotoSwipeUI_Default, this.getImagesAsPhotoswipe(), options).init();
+    //new PhotoSwipe(PSWP, PhotoSwipeUI_Default, this.getImagesAsPhotoswipe(), options).init();
     return false;
   }
 

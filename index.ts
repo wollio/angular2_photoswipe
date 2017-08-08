@@ -1,5 +1,3 @@
-'use strict';
-
 import { NgModule, ModuleWithProviders } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
@@ -10,9 +8,9 @@ export * from './src/model/image.model';
 import { Lightbox } from './src/component/lightbox.component';
 import { LightboxService } from './src/service/lightbox.service';
 
-window['PhotoSwipe'] = require('photoswipe');
-import PhotoSwipeUI_Default from 'photoswipe';
-window['PhotoSwipeUI_Default'] = PhotoSwipeUI_Default;
+//window['PhotoSwipe'] = require('photoswipe');
+//import {} from 'photoswipe';
+//window['PhotoSwipeUI_Default'] = PhotoSwipeUI_Default;
 
 export default {
   providers : [LightboxService],
