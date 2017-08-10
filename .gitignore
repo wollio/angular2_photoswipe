@@ -10,13 +10,14 @@ Thumbs.db
 *.d.ts
 
 # necessary project files
-!build.js
-!systemjs.config.js
+!config/*.js
+!webpack.config.js
 
 # IDE
 .idea/
+*.iml
 
 # Built files
-default-skin.css
+bundles/
 
 angular2_photoswipe-0.0.7.tgz
