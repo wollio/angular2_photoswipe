@@ -1,4 +1,4 @@
-import {Component, Input} from '@angular/core';
+import {Component, Input, ViewEncapsulation} from '@angular/core';
 import {Image} from '../model/image.model';
 import {LightboxService} from '../service/lightbox.service';
 import {PhotoswipeImage} from "../model/photoswipe-image.model";
@@ -63,7 +63,7 @@ declare let PhotoSwipeUI_Default: any;
           </div>
       </div>
   </div>`,
-  styles: []
+  encapsulation: ViewEncapsulation.None
 })
 export class Lightbox {
 
