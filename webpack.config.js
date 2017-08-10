@@ -26,11 +26,11 @@ module.exports = {
         publicPath: '/',
         filename: 'index.umd.js',
         libraryTarget: 'umd',
-        library: 'ng2-dnd'
+        library: 'angular2_photoswipe'
     },
 
     // require those dependencies but don't bundle them
-    externals: [/^\@angular\//, /^rxjs\//],
+    externals: [/^\@angular\//, /^rxjs\//, /^photoswipe$/],
 
     module: {
         rules: [{
@@ -40,8 +40,12 @@ module.exports = {
             exclude: [helpers.root('node_modules')]
         }, {
             test: /\.ts$/,
-            loader: 'awesome-typescript-loader?declaration=false',
+            loader: ['awesome-typescript-loader?declaration=false', 'angular2-template-loader'],
             exclude: [/\.e2e\.ts$/]
+        },
+        {
+            test: /\.html$/,
+            loader: 'html-loader'
         }]
     },
 

@@ -1,6 +1,8 @@
 import { NgModule, ModuleWithProviders } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
+import * as PhotoSwipe from 'photoswipe';
+
 export * from './src/service/lightbox.service';
 export * from './src/component/lightbox.component';
 export * from './src/model/image.model';
