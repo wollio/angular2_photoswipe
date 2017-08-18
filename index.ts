@@ -10,21 +10,16 @@ export * from './src/model/image.model';
 import { Lightbox } from './src/component/lightbox.component';
 import { LightboxService } from './src/service/lightbox.service';
 
-export default {
-  providers : [LightboxService],
-  directives: [Lightbox]
-};
-
 @NgModule({
   imports: [ CommonModule ],
   declarations: [ Lightbox ],
   providers: [ LightboxService ],
   exports: [ Lightbox ]
 })
-export class Angular2Photoswipe {
+export class Angular2PhotoswipeModule {
   static forRoot(): ModuleWithProviders {
         return {
-            ngModule: Angular2Photoswipe,
+            ngModule: Angular2PhotoswipeModule,
             providers: [LightboxService]
         };
     }
