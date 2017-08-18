@@ -72,7 +72,7 @@ export class Lightbox {
   constructor(private lbService:LightboxService) {
   }
 
-  public openImage(img : Image) {
+  public openImage(img: Image) {
     this.openPhotoSwipe(img, document.getElementsByClassName('angular2_photoswipe')[0]);
     return false;
   }

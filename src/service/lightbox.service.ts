@@ -26,7 +26,7 @@ export class LightboxService {
     }
   }
 
-  public getImages(key:string) : Image[] {
+  public getImages(key:string): Image[] {
     return this.gallery[key];
   }
 

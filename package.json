@@ -39,6 +39,7 @@
     "@types/photoswipe": "^4.0.28",
     "angular2-template-loader": "^0.6.2",
     "awesome-typescript-loader": "^3.2.2",
+    "codelyzer": "^3.1.2",
     "html-loader": "^0.5.1",
     "photoswipe": "4.1.2",
     "raw-loader": "^0.5.1",

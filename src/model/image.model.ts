@@ -1,8 +1,8 @@
 export class Image {
 
   id: number;
-  largeUrl : string;
-  thumbUrl : string;
+  largeUrl: string;
+  thumbUrl: string;
   size: string;
   width: number;
   height: number;
