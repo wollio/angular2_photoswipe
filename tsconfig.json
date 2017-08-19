@@ -18,7 +18,14 @@
         "lib": ["es2015", "dom"]
     },
     "files": [
-        "index.ts"
+      "index.ts",
+
+        "./src/component/lightbox.component.ts",
+
+        "./src/model/image.model.ts",
+        "./src/model/photoswipe-image.model.ts",
+
+        "./src/service/lightbox.service.ts"
     ],
     "exclude": [
         "node_modules",

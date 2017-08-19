@@ -6,8 +6,6 @@
     "build": "webpack",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "main": "index.js",
-  "typings": "index.d.ts",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/wollio/angular2_photoswipe.git"
@@ -24,17 +22,19 @@
   },
   "homepage": "https://github.com/wollio/angular2_photoswipe#readme",
   "peerDependencies": {
-    "@angular/core": "~4.0.1",
+    "@angular/core": "^2.4.4 || ^4.0.0",
     "photoswipe": "4.1.2"
   },
+  "main": "bundles/index.umd.js",
   "module": "index.js",
+  "typings": "index.d.ts",
   "devDependencies": {
-    "@angular/common": "~4.0.1",
-    "@angular/compiler": "~4.0.1",
-    "@angular/compiler-cli": "~4.0.1",
-    "@angular/core": "~4.0.1",
-    "@angular/platform-browser": "~4.0.1",
-    "@angular/platform-browser-dynamic": "~4.0.1",
+    "@angular/common": "^2.4.4 || ^4.0.0",
+    "@angular/compiler": "^2.4.4 || ^4.0.0",
+    "@angular/compiler-cli": "^2.4.4 || ^4.0.0",
+    "@angular/core": "^2.4.4 || ^4.0.0",
+    "@angular/platform-browser": "^2.4.4 || ^4.0.0",
+    "@angular/platform-browser-dynamic": "^2.4.4 || ^4.0.0",
     "@types/node": "^8.0.19",
     "@types/photoswipe": "^4.0.28",
     "angular2-template-loader": "^0.6.2",
