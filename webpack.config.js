@@ -30,7 +30,7 @@ module.exports = {
     },
 
     // require those dependencies but don't bundle them
-    externals: [/^\@angular\//, /^rxjs\//, /^photoswipe$/],
+    externals: [/^\@angular\//, /^rxjs\//, /^photoswipe\//],
 
     module: {
         rules: [{
@@ -40,7 +40,7 @@ module.exports = {
             exclude: [helpers.root('node_modules')]
         }, {
             test: /\.ts$/,
-            loader: ['awesome-typescript-loader?declaration=false', 'angular2-template-loader'],
+            loader: ['awesome-typescript-loader', 'angular2-template-loader'],
             exclude: [/\.e2e\.ts$/]
         },
         {

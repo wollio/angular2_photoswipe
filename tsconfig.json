@@ -1,38 +1,27 @@
 {
-    "compilerOptions": {
-        "noImplicitAny": true,
-        "module": "es2015",
-        "target": "es5",
-        "emitDecoratorMetadata": true,
-        "experimentalDecorators": true,
-        "declaration": true,
-        "moduleResolution": "node",
-        "types": [
-            "node",
-            "photoswipe"
-        ],
-        "typeRoots": [
-            // add path to @types
-            "node_modules/@types"
-        ],
-        "lib": ["es2015", "dom"]
-    },
-    "files": [
-      "index.ts",
-
-        "./src/component/lightbox.component.ts",
-
-        "./src/model/image.model.ts",
-        "./src/model/photoswipe-image.model.ts",
-
-        "./src/service/lightbox.service.ts"
+  "compilerOptions": {
+    "noImplicitAny": true,
+    "module": "es2015",
+    "target": "es5",
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "declaration": true,
+    "moduleResolution": "node",
+    "types": [
+      "photoswipe",
+      "node"
     ],
-    "exclude": [
-        "node_modules",
-        "bundles"
-    ],
-    "angularCompilerOptions": {
-        "strictMetadataEmit": true,
-        "skipTemplateCodegen": true
-    }
+    "lib": ["es2015", "dom"]
+  },
+  "files": [
+    "index.ts"
+  ],
+  "exclude": [
+    "node_modules",
+    "bundles"
+  ],
+  "angularCompilerOptions": {
+    "strictMetadataEmit": true,
+    "skipTemplateCodegen": true
+  }
 }
