@@ -3,7 +3,8 @@
   "version": "0.0.8",
   "description": "An angular2 component for photoswipe",
   "scripts": {
-    "build": "webpack",
+    "build": "webpack --config config/webpack.config.js",
+    "start": "webpack-dev-server --config config/webpack.dev.config.js --inline --progress --port 3000 --content-base src/demo",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -37,17 +38,29 @@
     "@angular/platform-browser-dynamic": "^2.4.4 || ^4.0.0",
     "@types/node": "^8.0.19",
     "@types/photoswipe": "^4.0.28",
+    "angular2-router-loader": "^0.3.5",
     "angular2-template-loader": "^0.6.2",
     "awesome-typescript-loader": "^3.2.2",
     "codelyzer": "^3.1.2",
+    "copy-webpack-plugin": "^4.0.1",
+    "core-js": "^2.5.1",
+    "css-loader": "^0.26.4",
+    "file-loader": "^0.11.2",
     "html-loader": "^0.5.1",
+    "html-webpack-plugin": "^2.30.1",
+    "ie-shim": "^0.1.0",
     "photoswipe": "4.1.2",
     "raw-loader": "^0.5.1",
+    "reflect-metadata": "^0.1.9",
     "rxjs": "^5.4.0",
+    "style-loader": "^0.18.2",
+    "to-string-loader": "^1.1.5",
     "tslint": "^5.6.0",
     "tslint-loader": "^3.5.3",
     "typescript": "^2.3.4",
     "webpack": "^2.6.1",
+    "webpack-dev-server": "^2.4.2",
+    "webpack-merge": "^4.1.0",
     "zone.js": "^0.8.12"
   }
 }
