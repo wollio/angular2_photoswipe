@@ -19,5 +19,4 @@ Thumbs.db
 
 # Built files
 bundles/
-
-angular2_photoswipe-0.0.7.tgz
+*.tgz
