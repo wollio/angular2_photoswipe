@@ -3,8 +3,8 @@ import {Image} from '../model/image.model';
 import {LightboxService} from '../service/lightbox.service';
 import {PhotoswipeImage} from "../model/photoswipe-image.model";
 
-declare let PhotoSwipe: any;
-declare let PhotoSwipeUI_Default: any;
+import * as PhotoSwipe from 'photoswipe';
+import * as PhotoSwipeUI_Default from 'photoswipe/dist/photoswipe-ui-default'
 
 @Component({
   selector: 'lightbox',

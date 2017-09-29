@@ -39,11 +39,6 @@ var commonConfig = {
 
         new HtmlWebpackPlugin({
             template: 'demo/src/index.html'
-        }),
-
-        new webpack.ProvidePlugin({
-            PhotoSwipe: 'photoswipe',
-            PhotoSwipeUI_Default: 'photoswipe/dist/photoswipe-ui-default'
         })
 
     ],

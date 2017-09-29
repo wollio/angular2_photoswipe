@@ -2,8 +2,8 @@ import { NgModule } from '@angular/core'
 import { BrowserModule } from '@angular/platform-browser';
 
 //for you
-//import {LightboxService, Angular2PhotoswipeModule} from 'angular2_photoswipe';
-import {LightboxService, Angular2PhotoswipeModule} from '../../../index';
+//import {Angular2PhotoswipeModule} from 'angular2_photoswipe';
+import {Angular2PhotoswipeModule} from '../../../index';
 import {AppComponent} from "./app.component";
 
 

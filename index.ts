@@ -8,6 +8,9 @@ export * from './src/model/image.model';
 import { Lightbox } from './src/component/lightbox.component';
 import { LightboxService } from './src/service/lightbox.service';
 
+import 'photoswipe/dist/photoswipe.css';
+import 'photoswipe/dist/default-skin/default-skin.css';
+
 export let providers = [LightboxService];
 
 @NgModule({
