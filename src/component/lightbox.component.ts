@@ -1,4 +1,7 @@
-import {Component, EventEmitter, Input, OnInit, Output, ViewEncapsulation} from '@angular/core';
+import {
+    AfterContentInit, AfterViewInit, Component, EventEmitter, Input, OnInit, Output,
+    ViewEncapsulation
+} from '@angular/core';
 import {Image} from '../model/image.model';
 import {LightboxService} from '../service/lightbox.service';
 import {PhotoswipeImage} from "../model/photoswipe-image.model";
@@ -66,7 +69,7 @@ const imagesLoaded = require('imagesloaded');
   </div>`,
   encapsulation: ViewEncapsulation.None
 })
-export class Lightbox implements OnInit {
+export class Lightbox implements AfterViewInit {
 
   @Input('galleryKey') key:string;
   @Output('imagesLoaded') loadedEmitter:EventEmitter<void> = new EventEmitter();
@@ -74,7 +77,7 @@ export class Lightbox implements OnInit {
   constructor(private lbService:LightboxService) {
   }
 
-  ngOnInit() {
+  ngAfterViewInit() {
     imagesLoaded( `#${this.key}`, () => {
       this.loadedEmitter.emit();
     });
