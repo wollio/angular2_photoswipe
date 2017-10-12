@@ -1,6 +1,6 @@
 {
   "name": "angular2_photoswipe",
-  "version": "0.0.10",
+  "version": "0.0.11",
   "description": "An angular2 component for photoswipe",
   "scripts": {
     "build": "webpack --config config/webpack.config.js",
