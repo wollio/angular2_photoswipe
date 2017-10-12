@@ -31,4 +31,8 @@ export class AppComponent implements OnInit {
       img2.thumbUrl = '/assets/two.jpg';
       this.ls.addImage('galleryKey', img2);
   }
+
+  imagesLoaded() {
+      console.log("Images loaded");
+  }
 }

@@ -1,14 +1,15 @@
-import {Component, Input, ViewEncapsulation} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output, ViewEncapsulation} from '@angular/core';
 import {Image} from '../model/image.model';
 import {LightboxService} from '../service/lightbox.service';
 import {PhotoswipeImage} from "../model/photoswipe-image.model";
 
 import * as PhotoSwipe from 'photoswipe';
 import * as PhotoSwipeUI_Default from 'photoswipe/dist/photoswipe-ui-default'
+const imagesLoaded = require('imagesloaded');
 
 @Component({
   selector: 'lightbox',
-  template: `<div class="angular2_photoswipe" itemscope itemtype="http://schema.org/ImageGallery">
+  template: `<div class="angular2_photoswipe" [id]="key" itemscope itemtype="http://schema.org/ImageGallery">
       <figure itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject" *ngFor="let image of getImages()">
           <a href="{{image.largeUrl}}" itemprop="contentUrl" [attr.data-size]="image.width + 'x' + image.height" (click)="openImage(image)">
               <img src="{{image.thumbUrl}}" itemprop="thumbnail" alt="{{image.description}}" />
@@ -65,11 +66,18 @@ import * as PhotoSwipeUI_Default from 'photoswipe/dist/photoswipe-ui-default'
   </div>`,
   encapsulation: ViewEncapsulation.None
 })
-export class Lightbox {
+export class Lightbox implements OnInit {
 
   @Input('galleryKey') key:string;
+  @Output('imagesLoaded') loadedEmitter:EventEmitter<void> = new EventEmitter();
 
   constructor(private lbService:LightboxService) {
+  }
+
+  ngOnInit() {
+    imagesLoaded( `#${this.key}`, () => {
+      this.loadedEmitter.emit();
+    });
   }
 
   public openImage(img: Image) {
@@ -99,10 +107,6 @@ export class Lightbox {
       items.push(new PhotoswipeImage(img.largeUrl, img.width, img.height));
     });
     return items;
-  }
-
-  private logImage(img:Image) {
-    console.log(img);
   }
 
 }
