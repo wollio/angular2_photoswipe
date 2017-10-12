@@ -1,5 +1,7 @@
 import {
-    AfterContentInit, AfterViewInit, Component, EventEmitter, Input, OnInit, Output,
+    AfterContentInit, AfterViewChecked, AfterViewInit, ChangeDetectorRef, Component, DoCheck, EventEmitter, Input,
+    OnChanges, OnInit,
+    Output,
     ViewEncapsulation
 } from '@angular/core';
 import {Image} from '../model/image.model';
@@ -69,17 +71,23 @@ const imagesLoaded = require('imagesloaded');
   </div>`,
   encapsulation: ViewEncapsulation.None
 })
-export class Lightbox implements AfterViewInit {
+export class Lightbox implements OnChanges {
 
   @Input('galleryKey') key:string;
-  @Output('imagesLoaded') loadedEmitter:EventEmitter<void> = new EventEmitter();
+  @Output('imagesLoaded') loadedEmitter:EventEmitter<number> = new EventEmitter();
 
-  constructor(private lbService:LightboxService) {
+  constructor(private lbService:LightboxService, private ref: ChangeDetectorRef) {
+    ref.detach();
   }
 
-  ngAfterViewInit() {
-    imagesLoaded( `#${this.key}`, () => {
-      this.loadedEmitter.emit();
+  ngOnChanges() {
+    this.ref.detectChanges();
+    this.checkImageLoad();
+  }
+
+  private checkImageLoad() {
+    imagesLoaded( `#${this.key}`, (check:any) => {
+      this.loadedEmitter.emit(check.images.length);
     });
   }
 

@@ -7,6 +7,9 @@ import {Image} from "../../../src/model/image.model";
   templateUrl: './app.component.html'
 })
 export class AppComponent implements OnInit {
+
+  galleryKey:string;
+
   constructor(private ls:LightboxService) {
 
   }
@@ -30,9 +33,13 @@ export class AppComponent implements OnInit {
       img2.size = `${img.width}x${img.height}`;
       img2.thumbUrl = '/assets/two.jpg';
       this.ls.addImage('galleryKey', img2);
+
+      setTimeout(() => {
+          this.galleryKey = 'galleryKey';
+      }, 2000);
   }
 
-  imagesLoaded() {
-      console.log("Images loaded");
+  imagesLoaded(event:any) {
+      console.log(event);
   }
 }
