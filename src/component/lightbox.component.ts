@@ -1,15 +1,12 @@
 import {
-    AfterContentInit, AfterViewChecked, AfterViewInit, ChangeDetectorRef, Component, DoCheck, EventEmitter, Input,
-    OnChanges, OnInit,
-    Output,
-    ViewEncapsulation
+    ChangeDetectorRef, Component, EventEmitter, Input, OnChanges, Output, ViewEncapsulation
 } from '@angular/core';
 import {Image} from '../model/image.model';
 import {LightboxService} from '../service/lightbox.service';
 import {PhotoswipeImage} from "../model/photoswipe-image.model";
 
 import * as PhotoSwipe from 'photoswipe';
-import * as PhotoSwipeUI_Default from 'photoswipe/dist/photoswipe-ui-default'
+import * as PhotoSwipeUI_Default from 'photoswipe/dist/photoswipe-ui-default';
 const imagesLoaded = require('imagesloaded');
 
 @Component({
