@@ -11,8 +11,8 @@ var CopyWebpackPlugin = require('copy-webpack-plugin');
 // Webpack Config
 var commonConfig = {
     entry: {
-        'main': './demo/src/main.browser.ts',
-        'vendor': './demo/src/vendor.browser.ts'
+        'main': path.resolve('./demo/src/main.browser.ts'),
+        'vendor': path.resolve('./demo/src/vendor.browser.ts')
     },
 
     output: {
@@ -29,7 +29,7 @@ var commonConfig = {
         new webpack.ContextReplacementPlugin(
             // The (\\|\/) piece accounts for path separators in *nix and Windows
             /angular(\\|\/)core(\\|\/)@angular/,
-            path.resolve(__dirname, '../src'),
+            helpers.root('./demo/src'),
             {
                 // your Angular Async Route paths relative to this root directory
             }
@@ -44,7 +44,7 @@ var commonConfig = {
     ],
 
     module: {
-        loaders: [
+        rules: [
             // .ts files for TypeScript
             {
                 test: /\.ts$/,
