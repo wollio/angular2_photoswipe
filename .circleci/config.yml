@@ -40,11 +40,11 @@ jobs:
     - attach_workspace:
         at: ~/repo
     - run:
-        name: Authenticate with registry
-        command: echo "//registry.npmjs.org/:_authToken=${NPM_TOKEN}" > ~/repo/dist/angular2_photoswipe/.npmrc
-    - run:
         name: Build Angular2Photoswipe
         command: npm run build_lib
+    - run:
+        name: Authenticate with registry
+        command: echo "//registry.npmjs.org/:_authToken=${NPM_TOKEN}" > ~/repo/dist/angular2_photoswipe/.npmrc
     - run:
         name: Copy README and LICENSE
         command: npm run copy-files
