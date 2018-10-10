@@ -52,6 +52,9 @@ jobs:
         name: Pack Angular2Photoswipe
         command: npm run npm_pack
     - run:
+        name: File list
+        command: ls -la dist/angular2_photoswipe/
+    - run:
         name: Publish Angular2Photoswipe
         command: npm run npm_publish
 
