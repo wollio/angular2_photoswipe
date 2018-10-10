@@ -1,0 +1,25 @@
+{
+  "name": "angular2_photoswipe",
+  "version": "0.0.11",
+  "description": "An angular2 component for photoswipe",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/wollio/angular2_photoswipe.git"
+  },
+  "keywords": [
+    "angular",
+    "PhotoSwipe",
+    "Lightbox"
+  ],
+  "author": "David Wollschlegel",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/wollio/angular2_photoswipe/issues"
+  },
+  "homepage": "https://github.com/wollio/angular2_photoswipe#readme",
+  "peerDependencies": {
+    "@angular/common": "^6.0.0-rc.0 || ^6.0.0",
+    "@angular/core": "^6.0.0-rc.0 || ^6.0.0",
+    "photoswipe": "^4.1.2"
+  }
+}

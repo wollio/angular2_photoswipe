@@ -1,22 +1,39 @@
-# Node generated files
-node_modules
+# See http://help.github.com/ignore-files/ for more about ignoring files.
+
+# compiled output
+/dist
+/tmp
+/out-tsc
+
+# dependencies
+/node_modules
+
+# IDEs and editors
+/.idea
+.project
+.classpath
+.c9/
+*.launch
+.settings/
+*.sublime-workspace
+
+# IDE - VSCode
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+
+# misc
+/.sass-cache
+/connect.lock
+/coverage
+/libpeerconnection.log
 npm-debug.log
-# OS generated files
-Thumbs.db
+yarn-error.log
+testem.log
+/typings
+
+# System Files
 .DS_Store
-# Ignored files
-*.js
-*.map
-*.d.ts
-
-# necessary project files
-!config/*.js
-!webpack.config.js
-
-# IDE
-.idea/
-*.iml
-
-# Built files
-bundles/
-*.tgz
+Thumbs.db
