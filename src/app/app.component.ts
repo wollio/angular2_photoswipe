@@ -8,8 +8,8 @@ import { Image } from 'angular2_photoswipe';
 })
 export class AppComponent {
   title = 'angular2-photoswipe-demo';
-  image1:Image;
-  image2:Image;
+  image1: Image;
+  image2: Image;
 
   constructor() {
     this.image1 = new Image();
