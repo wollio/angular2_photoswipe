@@ -1,27 +1,85 @@
-# Angular2PhotoswipeDemo
+# PhotoSwipe for Angular 2+
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 6.2.4.
+This project was generated with [Angular CLI](https://github.com/angular/angular-cli) 
+version 6.2.4.
 
-## Development server
+This is a library with components and services for PhotoSwipe. 
+The official PhotoSwipe JS file is still needed.
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+This library supports SSR. (Tested with [Angular Universal Starter](https://github.com/angular/universal-starter))
 
-## Code scaffolding
+## Installation
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+**Install NPM packages**
+```
+npm install --save photoswipe
+npm install --save angular2_photoswipe
+```
 
-## Build
+**Include the Angular2PhotoswipeModule.**
+```typescript
+import {Angular2PhotoswipeModule} from 'angular2_photoswipe';
+ 
+@NgModule({
+  ...
+  imports: [
+    BrowserModule,
+    Angular2PhotoswipeModule
+  ]
+  ...
+})
+export class AppModule {
+  ...
+}
+```
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+**HTML**
 
-## Running unit tests
+Place the `npg-lightbox` somewhere in your layout.
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+```html
+<ngp-lightbox></ngp-lightbox>
+```
 
-## Running end-to-end tests
+Add the `ngp-gallery` and the `ngp-gallery-item` in your component html. 
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
+```html
+<ngp-gallery>
+  <ngp-gallery-item [image]="image1"></ngp-gallery-item>
+  <ngp-gallery-item [image]="image2"></ngp-gallery-item>
+</ngp-gallery>
+```
 
-## Further help
+**Load images in component**
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+```typescript
+import { Image } from 'angular2_photoswipe';
+
+// instantiate images like this
+this.image1 = new Image();
+this.image1.largeUrl = 'https://picsum.photos/4934/3296/?image=1';
+this.image1.height = 3296;
+this.image1.width = 4934;
+this.image1.id = 0;
+this.image1.size = `${this.image1.width}x${this.image1.height}`;
+this.image1.thumbUrl = 'https://picsum.photos/300/200/?image=1'; 
+```
+
+## Demo
+
+This repository contains a demo app. the source is located in: `src/`
+
+Run `ng serve` to start the dev server for the demo. 
+Navigate to `http://localhost:4200/`. 
+The app will automatically reload if you change any of the source files.
+
+## angular2_photoswipe
+
+The library was created with the angular cli using `ng generate library`.
+
+**!!! The project's name is 'angular2-photoswipe' (with a dash) because an underline
+is not supported.**
+
+### build library
+
+To build the library run `npm run build_lib`.
