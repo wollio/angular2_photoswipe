@@ -1,5 +1,6 @@
 # PhotoSwipe for Angular 2+
 
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/03307ee37f9b4247b33602ab113b6bc9)](https://app.codacy.com/app/wollio/angular2_photoswipe?utm_source=github.com&utm_medium=referral&utm_content=wollio/angular2_photoswipe&utm_campaign=Badge_Grade_Dashboard)
 [![CircleCI](https://circleci.com/gh/wollio/angular2_photoswipe/tree/master.svg?style=shield)](https://circleci.com/gh/wollio/angular2_photoswipe/tree/master)
 [![npm version](https://badge.fury.io/js/angular2_photoswipe.svg)](https://badge.fury.io/js/angular2_photoswipe)
 
