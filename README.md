@@ -1,5 +1,8 @@
 # PhotoSwipe for Angular 2+
 
+[![CircleCI](https://circleci.com/gh/wollio/angular2_photoswipe/tree/master.svg?style=shield)](https://circleci.com/gh/wollio/angular2_photoswipe/tree/master)
+[![npm version](https://badge.fury.io/js/angular2_photoswipe.svg)](https://badge.fury.io/js/angular2_photoswipe)
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) 
 version 6.2.4.
 
