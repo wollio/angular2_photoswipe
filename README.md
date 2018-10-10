@@ -1,52 +1,27 @@
-# PhotoSwipe for Angular 2+
+# Angular2PhotoswipeDemo
 
-This is a library with components and services for PhotoSwipe.
-The official PhotoSwipe JS file is still needed.
+This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 6.2.4.
 
-### installation
+## Development server
 
-```
-npm install --save photoswipe
-npm install --save angular2_photoswipe
-```
-Include the Angular2PhotoswipeModule.
-```js
-import {Angular2PhotoswipeModule} from 'angular2_photoswipe';
+Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
 
-@NgModule({
-  ...
-  imports: [
-    BrowserModule,
-    Angular2PhotoswipeModule.forRoot()
-  ]
-  ...
-})
-export class AppModule {
-  ...
-}
-```
+## Code scaffolding
 
-### usage
+Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
 
-```js
-//create gallery
-this.ls.createGallery('galleryKey');
+## Build
 
-//define images
-let img = new Image();
-img.largeUrl = '/assets/one.jpg';
-img.height = 3296;
-img.width = 4934;
-img.id = 0;
-img.size = `${img.width}x${img.height}`;
-img.thumbUrl = '/assets/one.jpg';
+Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
 
-//add image to gallery
-this.ls.addImage('galleryKey', img);
-```
+## Running unit tests
 
-### demo
+Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
 
-For a complete integration example have a look in the demo folder.
+## Running end-to-end tests
 
+Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
 
+## Further help
+
+To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
