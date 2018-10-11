@@ -20,7 +20,8 @@
             "tsConfig": "src/tsconfig.app.json",
             "assets": [
               "src/favicon.ico",
-              "src/assets"
+              "src/assets",
+              { "glob": "**/*.@(svg|png|gif)", "input": "./node_modules/photoswipe/src/css/default-skin", "output": "/assets/media" }
             ],
             "styles": [
               "src/styles.css"
