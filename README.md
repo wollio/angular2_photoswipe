@@ -13,14 +13,34 @@ The official PhotoSwipe JS file is still needed.
 This library supports SSR. (Tested with [Angular Universal Starter](https://github.com/angular/universal-starter))
 
 ## Installation
-
-**Install NPM packages**
-```
+##### Install NPM packages
+```bash
 npm install --save photoswipe
 npm install --save angular2_photoswipe
 ```
 
-**Include the Angular2PhotoswipeModule.**
+##### Add assets in your angular.json
+```json
+"projects": {
+  "your-app-name": {
+    "architect": {
+      "build": {
+        "assets": [
+          // add this from here
+          { 
+            "glob": "**/*.@(svg|png|gif)", 
+            "input": "./node_modules/photoswipe/src/css/default-skin", 
+            "output": "/assets/media" 
+          }
+          // to here        
+        ]    
+      }
+    }
+  }
+}
+```
+
+##### Include the Angular2PhotoswipeModule.
 ```typescript
 import {Angular2PhotoswipeModule} from 'angular2_photoswipe';
  
@@ -37,7 +57,7 @@ export class AppModule {
 }
 ```
 
-**HTML**
+##### HTML
 
 Place the `npg-lightbox` somewhere in your layout.
 
@@ -54,7 +74,7 @@ Add the `ngp-gallery` and the `ngp-gallery-item` in your component html.
 </ngp-gallery>
 ```
 
-**Load images in component**
+##### Load images in component
 
 ```typescript
 import { Image } from 'angular2_photoswipe';
