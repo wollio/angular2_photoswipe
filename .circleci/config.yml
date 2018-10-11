@@ -62,7 +62,13 @@ workflows:
   version: 2
   test-deploy:
     jobs:
+    - test:
+        filters:
+          tags:
+            only: /^\d+\.\d+\.\d+$/
     - deploy:
+        requires:
+        - test
         filters:
           tags:
             only: /^\d+\.\d+\.\d+$/
