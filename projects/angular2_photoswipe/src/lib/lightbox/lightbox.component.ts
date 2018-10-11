@@ -4,13 +4,13 @@ import { NgpService } from '../ngp.service';
 @Component({
   selector: 'ngp-lightbox',
   templateUrl: './lightbox.component.html',
-  styleUrls: ['./lightbox.component.css']
+  styleUrls: ['./lightbox.component.scss']
 })
 export class LightboxComponent implements AfterContentInit {
 
-  @ViewChild('ngpLightbox') el:ElementRef;
+  @ViewChild('ngpLightbox') el: ElementRef;
 
-  constructor(private ngp:NgpService) {}
+  constructor(private ngp: NgpService) {}
 
   ngAfterContentInit() {
     this.ngp.LightboxElement = this.el;
