@@ -13,14 +13,14 @@ import { NgpService } from '../ngp.service';
 })
 export class GalleryComponent implements AfterContentInit {
 
-  @ViewChild('ngpGallery') galleryElement:ElementRef;
-  @ContentChildren(GalleryItemComponent) galleryItems:QueryList<GalleryItemComponent>
-  
-  id:string = 'sampleId';
+  @ViewChild('ngpGallery') galleryElement: ElementRef;
+  @ContentChildren(GalleryItemComponent) galleryItems: QueryList<GalleryItemComponent>
 
-  images:Image[];
+  id: String = 'sampleId';
 
-  constructor(private ngp:NgpService) {
+  images: Image[];
+
+  constructor(private ngp: NgpService) {
     this.images = [];
   }
 
@@ -28,10 +28,10 @@ export class GalleryComponent implements AfterContentInit {
     this.galleryItems.toArray().forEach(cp => {
       this.images.push(cp.image);
 
-      //listen for clicks;
+      // listen for clicks;
       cp.clicked.subscribe((data) => {
         this.onClick(data);
-      })
+      });
     });
   }
 
@@ -39,19 +39,35 @@ export class GalleryComponent implements AfterContentInit {
     this.openPhotoSwipe(data, this.galleryElement);
   }
 
-  private openPhotoSwipe(img:Image, galleryDOM:ElementRef):boolean {
-    let options:PhotoSwipe.Options = {};
+  private openPhotoSwipe(img: Image, galleryDOM: ElementRef): boolean {
+    const options: PhotoSwipe.Options = {
+      addCaptionHTMLFn: function(item, captionEl, isFake) {
+          if (!item.title) {
+              captionEl.children[0].innerHTML = '';
+              return false;
+          }
+          captionEl.children[0].innerHTML = item.title;
+          return true;
+      },
+    };
     options.galleryUID = galleryDOM.nativeElement.getAttribute('data-pswp-uid');
     options.index = img.id;
-    const PSWP:HTMLElement = <HTMLElement> this.ngp.LightboxElement.nativeElement;
+    const PSWP: HTMLElement = <HTMLElement> this.ngp.LightboxElement.nativeElement;
     new PhotoSwipe(PSWP, PhotoSwipeUI_Default, this.getImagesAsPhotoswipe(), options).init();
     return false;
   }
 
-  private getImagesAsPhotoswipe():any[] {
-    let items:any[] = [];
+  private getImagesAsPhotoswipe(): any[] {
+    const items: any[] = [];
     this.images.forEach(image => {
-      items.push({src: image.largeUrl, w: image.width, h: image.height})
+      items.push({
+          src: image.largeUrl,
+          w: image.width,
+          h: image.height,
+          pid: image.id,
+          title: image.description,
+          author: image.author
+      });
     });
     return items;
   }
