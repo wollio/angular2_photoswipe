@@ -1,6 +1,4 @@
-<figure itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject">
-  <a href="{{image.largeUrl}}" itemprop="contentUrl" [attr.data-size]="image.width + 'x' + image.height" (click)="onClick()">
-      <img src="{{image.thumbUrl}}" itemprop="thumbnail" alt="{{image.description}}" />
-  </a>
-  <figcaption itemprop="caption description">{{image.description}}</figcaption>
-</figure>
+<a href="{{image.largeUrl}}" itemprop="contentUrl" [attr.data-size]="image.width + 'x' + image.height"
+   [attr.data-author]="image.author" (click)="onClick()">
+    <img src="{{image.thumbUrl}}" itemprop="thumbnail" alt="{{image.description}}" />
+</a>
