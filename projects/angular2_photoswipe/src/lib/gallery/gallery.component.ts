@@ -1,6 +1,6 @@
 import { Component, ContentChildren, AfterContentInit, QueryList, ViewChild, ElementRef } from '@angular/core';
 import * as PhotoSwipe from 'photoswipe';
-import * as PhotoSwipeUI_Default from 'photoswipe/dist/photoswipe-ui-default'
+import * as PhotoSwipeUI_Default from 'photoswipe/dist/photoswipe-ui-default';
 
 import { GalleryItemComponent } from '../gallery-item/gallery-item.component';
 import { Image } from '../image';
@@ -14,7 +14,7 @@ import { NgpService } from '../ngp.service';
 export class GalleryComponent implements AfterContentInit {
 
   @ViewChild('ngpGallery') galleryElement: ElementRef;
-  @ContentChildren(GalleryItemComponent) galleryItems: QueryList<GalleryItemComponent>
+  @ContentChildren(GalleryItemComponent) galleryItems: QueryList<GalleryItemComponent>;
 
   id: String = 'sampleId';
 
@@ -35,7 +35,7 @@ export class GalleryComponent implements AfterContentInit {
     });
   }
 
-  onClick(data) {
+  onClick(data: Image) {
     this.openPhotoSwipe(data, this.galleryElement);
   }
 
@@ -51,20 +51,23 @@ export class GalleryComponent implements AfterContentInit {
       },
     };
     options.galleryUID = galleryDOM.nativeElement.getAttribute('data-pswp-uid');
-    options.index = img.id;
+    const imageData = this.getImagesAsPhotoswipe();
+    options.index = img.index;
     const PSWP: HTMLElement = <HTMLElement> this.ngp.LightboxElement.nativeElement;
-    new PhotoSwipe(PSWP, PhotoSwipeUI_Default, this.getImagesAsPhotoswipe(), options).init();
+    new PhotoSwipe(PSWP, PhotoSwipeUI_Default, imageData, options).init();
     return false;
   }
 
   private getImagesAsPhotoswipe(): any[] {
     const items: any[] = [];
+    let index = 0;
     this.images.forEach(image => {
+      image.index = index++;
       items.push({
           src: image.largeUrl,
           w: image.width,
           h: image.height,
-          pid: image.id,
+          pid: image.pid,
           title: image.description,
           author: image.author
       });
