@@ -1,6 +1,7 @@
 export class Image {
 
-  id: number;
+  index: number;
+  pid: string;
   largeUrl: string;
   thumbUrl: string;
   size: string;
@@ -8,6 +9,10 @@ export class Image {
   height: number;
   description: string;
   author: string;
+
+  set id (newId: number) {
+    this.pid = '' + newId;
+  }
 
   constructor() {}
 }
