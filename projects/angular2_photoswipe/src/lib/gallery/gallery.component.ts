@@ -1,5 +1,4 @@
 import { Component, ContentChildren, AfterContentInit, QueryList, ViewChild, ElementRef, Input } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
 import * as PhotoSwipe from 'photoswipe';
 import * as PhotoSwipeUI_Default from 'photoswipe/dist/photoswipe-ui-default';
 
@@ -12,28 +11,16 @@ import { NgpService } from '../ngp.service';
   templateUrl: './gallery.component.html',
   styleUrls: ['./gallery.component.css']
 })
-export class GalleryComponent implements AfterContentInit {
+export class GalleryComponent {
 
   @ViewChild('ngpGallery') galleryElement: ElementRef;
   @ContentChildren(GalleryItemComponent) galleryItems: QueryList<GalleryItemComponent>;
 
   @Input() id: String = 'sampleId';
 
-  images: Image[];
 
   constructor(private ngp: NgpService) {
-    this.images = [];
-  }
 
-  ngAfterContentInit() {
-    this.galleryItems.toArray().forEach(cp => {
-      this.images.push(cp.image);
-
-      // listen for clicks;
-      cp.clicked.subscribe((data) => {
-        this.onClick(data);
-      });
-    });
   }
 
   onClick(data: Image) {
@@ -62,7 +49,9 @@ export class GalleryComponent implements AfterContentInit {
   private getImagesAsPhotoswipe(): any[] {
     const items: any[] = [];
     let index = 0;
-    this.images.forEach(image => {
+
+    this.galleryItems.toArray().forEach(cp => {
+      const image = cp.image;
       image.index = index++;
       items.push({
           src: image.largeUrl,
