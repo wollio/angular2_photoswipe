@@ -17,6 +17,8 @@ export class GalleryComponent {
 
   @Input() id: String = 'sampleId';
 
+  @Input() options: PhotoSwipe.Options = null;
+
   constructor(private ngp: NgpService) {}
 
   onClick(data: Image) {
@@ -24,9 +26,9 @@ export class GalleryComponent {
   }
 
   private openPhotoSwipe(img: Image): boolean {
-    const options: PhotoSwipe.Options = { };
+    const opt: PhotoSwipe.Options = null == this.options ? {} : this.options;
 
-    options.addCaptionHTMLFn = function(item, captionEl, isFake) {
+    opt.addCaptionHTMLFn = function(item, captionEl, isFake) {
           if (!item.title) {
               captionEl.children[0].innerHTML = '';
               return false;
@@ -35,28 +37,12 @@ export class GalleryComponent {
           return true;
       };
 
-      options.shareButtons = [
-        // {id:'context', label:'Nabídka', url:'zobrazMenuPro (\'{{text}}\')', onclick:true},
-        {id: 'download', label: 'Stáhnout', url: '{{raw_image_url}}', download: true}
-         ];
+    opt.galleryUID = this.id;
 
-      options.loop = true;
-         // nasleduji vlastnosti pro minimal
-      options.mainClass = 'pswp--minimal--dark';
-      options.barsSize = {top: 0, bottom: 0};
-      options.captionEl = false;
-      options.fullscreenEl = false;
-         // shareEl: false,
-      options.bgOpacity = 0.85;
-      options.tapToClose = true;
-      options.tapToToggleControls = false;
-
-
-    options.galleryUID = this.id; 
     const imageData = this.getImagesAsPhotoswipe();
-    options.index = img.index;
+    opt.index = img.index;
     const PSWP: HTMLElement = <HTMLElement> this.ngp.LightboxElement.nativeElement;
-    new PhotoSwipe(PSWP, PhotoSwipeUI_Default, imageData, options).init();
+    new PhotoSwipe(PSWP, PhotoSwipeUI_Default, imageData, opt).init();
     return false;
   }
 
