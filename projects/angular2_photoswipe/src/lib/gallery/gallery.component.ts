@@ -53,15 +53,27 @@ export class GalleryComponent {
     this.galleryItems.toArray().forEach(cp => {
       const image = cp.image;
       image.index = index++;
-      items.push({
-          src: image.largeUrl,
-          w: image.width,
-          h: image.height,
-          pid: image.pid,
-          title: image.description,
-          author: image.author
-      });
+
+      const img: any  = {
+        w: image.width,
+        h: image.height,
+        pid: image.pid,
+        title: image.description,
+        author: image.author
+      };
+
+      if (null == image.html) {
+        img.src = image.largeUrl;
+      } else {
+        img.html = image.html;
+      }
+
+      items.push(img);
+
     });
+
+    console.log (items);
+
     return items;
   }
 
