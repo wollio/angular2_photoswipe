@@ -1,4 +1,4 @@
-import { Component, ContentChildren, AfterContentInit, QueryList, ViewChild, ElementRef, Input } from '@angular/core';
+import { Component, ContentChildren, QueryList, Input } from '@angular/core';
 import * as PhotoSwipe from 'photoswipe';
 import * as PhotoSwipeUI_Default from 'photoswipe/dist/photoswipe-ui-default';
 
@@ -13,32 +13,46 @@ import { NgpService } from '../ngp.service';
 })
 export class GalleryComponent {
 
-  @ViewChild('ngpGallery') galleryElement: ElementRef;
   @ContentChildren(GalleryItemComponent) galleryItems: QueryList<GalleryItemComponent>;
 
   @Input() id: String = 'sampleId';
 
-
-  constructor(private ngp: NgpService) {
-
-  }
+  constructor(private ngp: NgpService) {}
 
   onClick(data: Image) {
-    this.openPhotoSwipe(data, this.galleryElement);
+    this.openPhotoSwipe(data);
   }
 
-  private openPhotoSwipe(img: Image, galleryDOM: ElementRef): boolean {
-    const options: PhotoSwipe.Options = {
-      addCaptionHTMLFn: function(item, captionEl, isFake) {
+  private openPhotoSwipe(img: Image): boolean {
+    const options: PhotoSwipe.Options = { };
+
+    options.addCaptionHTMLFn = function(item, captionEl, isFake) {
           if (!item.title) {
               captionEl.children[0].innerHTML = '';
               return false;
           }
           captionEl.children[0].innerHTML = item.title;
           return true;
-      },
-    };
-    options.galleryUID = this.id; // galleryDOM.nativeElement.getAttribute('data-pswp-uid');
+      };
+
+      options.shareButtons = [
+        // {id:'context', label:'Nabídka', url:'zobrazMenuPro (\'{{text}}\')', onclick:true},
+        {id: 'download', label: 'Stáhnout', url: '{{raw_image_url}}', download: true}
+         ];
+
+      options.loop = true;
+         // nasleduji vlastnosti pro minimal
+      options.mainClass = 'pswp--minimal--dark';
+      options.barsSize = {top: 0, bottom: 0};
+      options.captionEl = false;
+      options.fullscreenEl = false;
+         // shareEl: false,
+      options.bgOpacity = 0.85;
+      options.tapToClose = true;
+      options.tapToToggleControls = false;
+
+
+    options.galleryUID = this.id; 
     const imageData = this.getImagesAsPhotoswipe();
     options.index = img.index;
     const PSWP: HTMLElement = <HTMLElement> this.ngp.LightboxElement.nativeElement;
