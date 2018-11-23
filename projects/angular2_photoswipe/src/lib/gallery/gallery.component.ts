@@ -1,6 +1,6 @@
-import { Component, ContentChildren, AfterContentInit, QueryList, ViewChild, ElementRef } from '@angular/core';
+import { Component, ContentChildren, QueryList, Input } from '@angular/core';
 import * as PhotoSwipe from 'photoswipe';
-import * as PhotoSwipeUI_Default from 'photoswipe/dist/photoswipe-ui-default'
+import * as PhotoSwipeUI_Default from 'photoswipe/dist/photoswipe-ui-default';
 
 import { GalleryItemComponent } from '../gallery-item/gallery-item.component';
 import { Image } from '../image';
@@ -11,64 +11,69 @@ import { NgpService } from '../ngp.service';
   templateUrl: './gallery.component.html',
   styleUrls: ['./gallery.component.css']
 })
-export class GalleryComponent implements AfterContentInit {
+export class GalleryComponent {
 
-  @ViewChild('ngpGallery') galleryElement: ElementRef;
-  @ContentChildren(GalleryItemComponent) galleryItems: QueryList<GalleryItemComponent>
+  @ContentChildren(GalleryItemComponent) galleryItems: QueryList<GalleryItemComponent>;
 
-  id: String = 'sampleId';
+  @Input() id: String = 'sampleId';
 
-  images: Image[];
+  @Input() options: PhotoSwipe.Options = null;
 
-  constructor(private ngp: NgpService) {
-    this.images = [];
+  constructor(private ngp: NgpService) {}
+
+  onClick(data: Image) {
+    this.openPhotoSwipe(data);
   }
 
-  ngAfterContentInit() {
-    this.galleryItems.toArray().forEach(cp => {
-      this.images.push(cp.image);
+  private openPhotoSwipe(img: Image): boolean {
+    const opt: PhotoSwipe.Options = null == this.options ? {} : this.options;
 
-      // listen for clicks;
-      cp.clicked.subscribe((data) => {
-        this.onClick(data);
-      });
-    });
-  }
-
-  onClick(data) {
-    this.openPhotoSwipe(data, this.galleryElement);
-  }
-
-  private openPhotoSwipe(img: Image, galleryDOM: ElementRef): boolean {
-    const options: PhotoSwipe.Options = {
-      addCaptionHTMLFn: function(item, captionEl, isFake) {
+    opt.addCaptionHTMLFn = function(item, captionEl, isFake) {
           if (!item.title) {
               captionEl.children[0].innerHTML = '';
               return false;
           }
           captionEl.children[0].innerHTML = item.title;
           return true;
-      },
-    };
-    options.galleryUID = galleryDOM.nativeElement.getAttribute('data-pswp-uid');
-    options.index = img.id;
+      };
+
+    opt.galleryUID = this.id;
+
+    const imageData = this.getImagesAsPhotoswipe();
+    opt.index = img.index;
     const PSWP: HTMLElement = <HTMLElement> this.ngp.LightboxElement.nativeElement;
-    new PhotoSwipe(PSWP, PhotoSwipeUI_Default, this.getImagesAsPhotoswipe(), options).init();
+    new PhotoSwipe(PSWP, PhotoSwipeUI_Default, imageData, opt).init();
     return false;
   }
 
   private getImagesAsPhotoswipe(): any[] {
     const items: any[] = [];
-    this.images.forEach(image => {
-      items.push({
-          src: image.largeUrl,
-          w: image.width,
-          h: image.height,
-          pid: image.id,
-          title: image.description,
-          author: image.author
-      });
+    let index = 0;
+
+    this.galleryItems.toArray().forEach(cp => {
+      const image = cp.image;
+      image.index = index++;
+
+      const img: any  = {
+        w: image.width,
+        h: image.height,
+        pid: image.pid,
+        title: image.description,
+        author: image.author
+      };
+
+      if (null == image.html) {
+        img.src = image.largeUrl;
+      } else {
+        img.html = image.html;
+      }
+
+      items.push(img);
+
     });
+
+    console.log (items);
+
     return items;
   }
 

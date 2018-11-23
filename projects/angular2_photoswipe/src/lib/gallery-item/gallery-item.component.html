@@ -1,4 +1,5 @@
 <a href="{{image.largeUrl}}" itemprop="contentUrl" [attr.data-size]="image.width + 'x' + image.height"
    [attr.data-author]="image.author" (click)="onClick()">
-    <img src="{{image.thumbUrl}}" itemprop="thumbnail" alt="{{image.description}}" />
+    <img src="{{image.thumbUrl}}" [attr.width]="image.thumbWidth" [attr.height]="image.thumbHeight" itemprop="thumbnail" alt="{{image.description}}" />
+    <ng-content></ng-content>
 </a>
