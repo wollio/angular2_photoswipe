@@ -5,7 +5,7 @@ import { Injectable, ElementRef } from '@angular/core';
 })
 export class NgpService {
 
-  LightboxElement: ElementRef;
+  LightboxElement:ElementRef;
 
   constructor() { }
 }
