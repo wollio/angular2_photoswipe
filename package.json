@@ -11,7 +11,7 @@
     "build_lib": "ng build angular2-photoswipe",
     "copy-files": "cp ./README.md ./dist/angular2_photoswipe && cp ./LICENSE ./dist/angular2_photoswipe",
     "npm_pack": "cd dist/angular2_photoswipe && npm pack",
-    "npm_publish": "cd dist/angular2_photoswipe && npm publish"
+    "npm_publish": "cd dist/angular2_photoswipe && npm publish --access public"
   },
   "private": true,
   "dependencies": {

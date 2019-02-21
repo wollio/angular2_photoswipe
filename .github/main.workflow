@@ -1,9 +1,41 @@
-workflow "New workflow" {
+workflow "Install, Build, Copy files, Pack and Publish" {
   on = "push"
-  resolves = ["GitHub Action for npm"]
+  resolves = ["Publish"]
 }
 
-action "GitHub Action for npm" {
-  uses = "actions/npm@59b64a598378f31e49cb76f27d6f3312b582f680"
+action "Install" {
+  uses = "actions/npm@master"
+  args = "install"
+}
+
+action "Build" {
+  needs = "Install"
+  uses = "actions/npm@master"
+  args = "run build_lib"
+}
+
+action "Copy files" {
+  needs = "Build"
+  uses = "actions/npm@master"
+  args = "run copy-files"
+}
+
+action "Pack" {
+  needs = "Copy files"
+  uses = "actions/npm@master"
+  args = "run npm_pack"
+}
+
+# Filter for a new tag
+action "Tag" {
+  needs = "Test"
+  uses = "actions/bin/filter@master"
+  args = "tag"
+}
+
+action "Publish" {
+  needs = "Tag"
+  uses = "actions/npm@master"
+  args = "run npm_publish"
   secrets = ["NPM_AUTH_TOKEN"]
 }
