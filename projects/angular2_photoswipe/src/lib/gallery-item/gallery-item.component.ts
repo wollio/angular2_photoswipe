@@ -1,6 +1,5 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { Image } from '../image';
-import { GalleryComponent } from '../gallery/gallery.component';
 
 @Component({
   selector: 'ngp-gallery-item',
@@ -8,14 +7,15 @@ import { GalleryComponent } from '../gallery/gallery.component';
   styleUrls: ['./gallery-item.component.css']
 })
 export class GalleryItemComponent {
+  
+  @Input('image') image:Image;
+  @Output() clicked = new EventEmitter<Image>();
 
-  @Input() image: Image;
-
-  constructor(private galComp: GalleryComponent) {
+  constructor() {
   }
 
   public onClick() {
-    this.galComp.onClick (this.image);
+    this.clicked.emit(this.image);
     return false;
   }
 
