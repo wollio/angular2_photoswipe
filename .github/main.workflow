@@ -28,7 +28,7 @@ action "Pack" {
 
 # Filter for a new tag
 action "Tag" {
-  needs = "Test"
+  needs = "Pack"
   uses = "actions/bin/filter@master"
   args = "tag"
 }
