@@ -5,18 +5,20 @@ import * as PhotoSwipeUI_Default from 'photoswipe/dist/photoswipe-ui-default'
 import { GalleryItemComponent } from '../gallery-item/gallery-item.component';
 import { Image } from '../image';
 import { NgpService } from '../ngp.service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'ngp-gallery',
   templateUrl: './gallery.component.html',
   styleUrls: ['./gallery.component.css']
 })
-export class GalleryComponent implements AfterContentInit {
+export class GalleryComponent implements AfterContentInit, OnDestroy {
 
   @ViewChild('ngpGallery') galleryElement: ElementRef;
   @ContentChildren(GalleryItemComponent) galleryItems: QueryList<GalleryItemComponent>
 
   id: String = 'sampleId';
+  subscriptions : Subscription[] = [];
 
   images: Image[];
 
@@ -27,11 +29,15 @@ export class GalleryComponent implements AfterContentInit {
   ngAfterContentInit() {
    this.images = this.galleryItems.toArray().map(cp => {
       // listen for clicks;
-      cp.clicked.subscribe((data) => {
-        this.onClick(data);
+      this.subscriptions.push(cp.clicked.subscribe((data) => {
+        this.onClick(data));
       });
      return cp;
     });
+  }
+  
+  ngOnDestroy(){
+    this.subscriptions.forEach(sub => sub.unsubscribe());
   }
 
   onClick(data) {
