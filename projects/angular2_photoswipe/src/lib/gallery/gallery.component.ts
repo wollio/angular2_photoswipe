@@ -30,6 +30,7 @@ export class GalleryComponent implements AfterContentInit {
       cp.clicked.subscribe((data) => {
         this.onClick(data);
       });
+     return cp;
     });
   }
 
@@ -57,7 +58,6 @@ export class GalleryComponent implements AfterContentInit {
 
   private getImagesAsPhotoswipe(): any[] {
     return this.images.map(image : Image => {
-      return {
           src: image.largeUrl,
           w: image.width,
           h: image.height,
