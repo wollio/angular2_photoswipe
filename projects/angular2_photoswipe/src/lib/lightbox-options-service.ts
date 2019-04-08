@@ -6,5 +6,5 @@ class LightxoxOptionsService {
  
 const LIGHTBOX_OPTIONS = new InjectionToken<LightBoxOptionsService>('LightboxOptions', {
   providedIn: 'root',
-  factory: () => new LightboxOptionsService(inject(MyDep)),
+  factory: () => new LightboxOptionsService(inject(LightboxOptions)),
 });
