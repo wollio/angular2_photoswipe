@@ -25,9 +25,7 @@ export class GalleryComponent implements AfterContentInit {
   }
 
   ngAfterContentInit() {
-    this.galleryItems.toArray().forEach(cp => {
-      this.images.push(cp.image);
-
+   this.images = this.galleryItems.toArray().map(cp => {
       // listen for clicks;
       cp.clicked.subscribe((data) => {
         this.onClick(data);
@@ -58,18 +56,16 @@ export class GalleryComponent implements AfterContentInit {
   }
 
   private getImagesAsPhotoswipe(): any[] {
-    const items: any[] = [];
-    this.images.forEach(image => {
-      items.push({
+    return this.images.map(image : Image => {
+      return {
           src: image.largeUrl,
           w: image.width,
           h: image.height,
           pid: image.id,
           title: image.description,
           author: image.author
-      });
+       };
     });
-    return items;
   }
 
 }
