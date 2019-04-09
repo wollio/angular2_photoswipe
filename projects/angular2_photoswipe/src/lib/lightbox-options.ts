@@ -1,5 +1,5 @@
 export interface LightboxOptions {
-  allowPanToNext: boolean;
+        allowPanToNext: boolean;
 	spacing: number;
 	bgOpacity: number;
 	mouseUsed: boolean;
