@@ -1,6 +1,6 @@
-import { LightboxOptions } from './lightbox-options';
 
-export const DefaultLightboxOptions: LightboxOptions = {
+import * as PhotoSwipe from 'photoswipe';
+export const DefaultLightboxOptions: PhotoSwipe.Options = {
 	allowPanToNext:true,
 	spacing: 0.12,
 	bgOpacity: 1,
@@ -21,6 +21,6 @@ export const DefaultLightboxOptions: LightboxOptions = {
 }
 
 export interface LightboxToken {
-    default: LightboxOptions;
-    options: Partial<LightboxOptions>;
+    default: PhotoSwipe.Options;
+    options: Partial<PhotoSwipe.Options>;
   }

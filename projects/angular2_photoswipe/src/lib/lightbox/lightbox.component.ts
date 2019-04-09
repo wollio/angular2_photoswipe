@@ -10,10 +10,8 @@ import { LightboxToken } from '../default-lightbox-options';
 export class LightboxComponent implements AfterContentInit {
 
   @ViewChild('ngpLightbox') el: ElementRef;
-  options: LightboxToken;
 
   constructor(private ngp: NgpService) { 
-   this.options = ngp.getOptions();
   }
 
   ngAfterContentInit() {

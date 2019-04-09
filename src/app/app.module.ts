@@ -12,7 +12,7 @@ import { AppComponent } from './app.component';
   ],
   imports: [
     BrowserModule,
-    Angular2PhotoswipeModule.forRoot({ErrorTextColor : 'red', backgroundColor :'red', opacity: 0.2}) 
+    Angular2PhotoswipeModule.forRoot({}),
   ],
   providers: [],
   bootstrap: [AppComponent]
