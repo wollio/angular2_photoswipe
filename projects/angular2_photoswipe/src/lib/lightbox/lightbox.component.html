@@ -1,8 +1,8 @@
 <!-- Root element of PhotoSwipe. Must have class pswp. -->
-<div class="pswp" #ngpLightbox tabindex="-1" role="dialog" aria-hidden="true">
+<div class="pswp" #ngpLightbox tabindex="-1" [ngStyle]="{'background-color': options.options.backgroundColor ? options.options.backgroundColor : options.default.backgroundColor }" role="dialog" aria-hidden="true">
   <!-- Background of PhotoSwipe.
          It's a separate element, as animating opacity is faster than rgba(). -->
-  <div class="pswp__bg"></div>
+  <div class="pswp__bg" [ngStyle]="{'background-color': options.options.backgroundColor ? options.options.backgroundColor : options.default.backgroundColor, 'opacity': options.options.opacity ? options.options.opacity : options.default.opacity }"></div>
   <!-- Slides wrapper with overflow:hidden. -->
   <div class="pswp__scroll-wrap">
       <!-- Container that holds slides. PhotoSwipe keeps only 3 slides in DOM to save memory. -->

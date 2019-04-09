@@ -1,5 +1,6 @@
-import { Component, ViewChild, ElementRef, AfterContentInit } from '@angular/core';
+import { Component, ViewChild, ElementRef, AfterContentInit, Inject } from '@angular/core';
 import { NgpService } from '../ngp.service';
+import { LightboxToken } from '../default-lightbox-options';
 
 @Component({
   selector: 'ngp-lightbox',
@@ -9,8 +10,11 @@ import { NgpService } from '../ngp.service';
 export class LightboxComponent implements AfterContentInit {
 
   @ViewChild('ngpLightbox') el: ElementRef;
+  options: LightboxToken;
 
-  constructor(private ngp: NgpService) {}
+  constructor(private ngp: NgpService) { 
+   this.options = ngp.getOptions();
+  }
 
   ngAfterContentInit() {
     this.ngp.LightboxElement = this.el;
