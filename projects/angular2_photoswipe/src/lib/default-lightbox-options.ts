@@ -1,16 +1,23 @@
 import { LightboxOptions } from './lightbox-options';
 
 export const DefaultLightboxOptions: LightboxOptions = {
-    ErrorTextColor: 'red',
-    assetsPath: '/assets',
-    backgroundColor: 'green',
-    boxSizingBorderBox: true,
-    controlsTransitionDuration: 333,
-    includeMinimalStyle: false,
-    opacity: 1,
-    placeholderColor: 'white',
-    rootZIndex: 1500,
-    showHideTransitionDuration: 333,
+	allowPanToNext:true,
+	spacing: 0.12,
+	bgOpacity: 1,
+	mouseUsed: false,
+	loop: true,
+	pinchToClose: true,
+	closeOnScroll: true,
+	closeOnVerticalDrag: true,
+	verticalDragRange: 0.75,
+	hideAnimationDuration: 333,
+	showAnimationDuration: 333,
+	showHideOpacity: false,
+	focus: true,
+	escKey: true,
+	arrowKeys: true,
+	mainScrollEndFriction: 0.35,
+	panEndFriction: 0.35,
 }
 
 export interface LightboxToken {
