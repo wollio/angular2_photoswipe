@@ -30,7 +30,7 @@ export class GalleryComponent implements AfterContentInit, OnDestroy {
     this.images = <any>this.galleryItems.toArray().map(cp => {
       // listen for clicks;
       this.subscriptions.push(cp.clicked.subscribe((data) => this.onClick(data)));
-      return cp;
+      return cp.image;
     });
   }
 
