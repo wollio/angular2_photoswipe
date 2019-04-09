@@ -1,4 +1,4 @@
-interface LightboxOptions {
+export interface LightboxOptions {
   showHideTransitionDuration: number;
   controlsTransitionDuration: number;
   opacity: number;

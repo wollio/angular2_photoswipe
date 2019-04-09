@@ -1,4 +1,4 @@
-import { Component, ContentChildren, AfterContentInit, QueryList, ViewChild, ElementRef } from '@angular/core';
+import { Component, ContentChildren, AfterContentInit, QueryList, ViewChild, ElementRef, OnDestroy } from '@angular/core';
 import * as PhotoSwipe from 'photoswipe';
 import * as PhotoSwipeUI_Default from 'photoswipe/dist/photoswipe-ui-default'
 
@@ -18,7 +18,7 @@ export class GalleryComponent implements AfterContentInit, OnDestroy {
   @ContentChildren(GalleryItemComponent) galleryItems: QueryList<GalleryItemComponent>
 
   id: String = 'sampleId';
-  subscriptions : Subscription[] = [];
+  subscriptions: Subscription[] = [];
 
   images: Image[];
 
@@ -27,14 +27,14 @@ export class GalleryComponent implements AfterContentInit, OnDestroy {
   }
 
   ngAfterContentInit() {
-   this.images = this.galleryItems.toArray().map(cp => {
-     // listen for clicks;
-     this.subscriptions.push(cp.clicked.subscribe((data) => this.onClick(data)));
-     return cp;
-   });
+    this.images = <any>this.galleryItems.toArray().map(cp => {
+      // listen for clicks;
+      this.subscriptions.push(cp.clicked.subscribe((data) => this.onClick(data)));
+      return cp;
+    });
   }
-  
-  ngOnDestroy(){
+
+  ngOnDestroy() {
     this.subscriptions.forEach(sub => sub.unsubscribe());
   }
 
@@ -44,32 +44,33 @@ export class GalleryComponent implements AfterContentInit, OnDestroy {
 
   private openPhotoSwipe(img: Image, galleryDOM: ElementRef): boolean {
     const options: PhotoSwipe.Options = {
-      addCaptionHTMLFn: function(item, captionEl, isFake) {
-          if (!item.title) {
-              captionEl.children[0].innerHTML = '';
-              return false;
-          }
-          captionEl.children[0].innerHTML = item.title;
-          return true;
+      addCaptionHTMLFn: function (item, captionEl, isFake) {
+        if (!item.title) {
+          captionEl.children[0].innerHTML = '';
+          return false;
+        }
+        captionEl.children[0].innerHTML = item.title;
+        return true;
       },
     };
     options.galleryUID = galleryDOM.nativeElement.getAttribute('data-pswp-uid');
     options.index = img.id;
-    const PSWP: HTMLElement = <HTMLElement> this.ngp.LightboxElement.nativeElement;
+    const PSWP: HTMLElement = <HTMLElement>this.ngp.LightboxElement.nativeElement;
     new PhotoSwipe(PSWP, PhotoSwipeUI_Default, this.getImagesAsPhotoswipe(), options).init();
     return false;
   }
 
   private getImagesAsPhotoswipe(): any[] {
-    return this.images.map(image : Image => {
-          src: image.largeUrl,
-          w: image.width,
-          h: image.height,
-          pid: image.id,
-          title: image.description,
-          author: image.author
-       };
+    return this.images.map(image => {
+      return {
+        src: image.largeUrl,
+        w: image.width,
+        h: image.height,
+        pid: image.id,
+        title: image.description,
+        author: image.author
+      };
     });
-  }
 
+  }
 }
