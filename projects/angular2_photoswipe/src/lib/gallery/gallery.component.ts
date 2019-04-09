@@ -1,4 +1,4 @@
-import { Component, ContentChildren, AfterContentInit, QueryList, ViewChild, ElementRef, OnDestroy } from '@angular/core';
+import { Component, ContentChildren, AfterContentInit, QueryList, ViewChild, ElementRef, OnDestroy, Inject } from '@angular/core';
 import * as PhotoSwipe from 'photoswipe';
 import * as PhotoSwipeUI_Default from 'photoswipe/dist/photoswipe-ui-default'
 
@@ -6,6 +6,7 @@ import { GalleryItemComponent } from '../gallery-item/gallery-item.component';
 import { Image } from '../image';
 import { NgpService } from '../ngp.service';
 import { Subscription } from 'rxjs';
+import { LIGHTBOX_TOKEN, LightboxToken } from '../default-lightbox-options';
 
 @Component({
   selector: 'ngp-gallery',
@@ -23,9 +24,9 @@ export class GalleryComponent implements AfterContentInit, OnDestroy {
 
   images: Image[];
 
-  constructor(private ngp: NgpService) {
+  constructor(private ngp: NgpService, @Inject(LIGHTBOX_TOKEN) readonly token: LightboxToken) {
     this.images = [];
-    this.options = Object.assign(ngp.getOptions().default, ngp.getOptions().options);
+    this.options = Object.assign(token.default, token.options);
   }
 
   ngAfterContentInit() {

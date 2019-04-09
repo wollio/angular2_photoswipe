@@ -1,7 +1,8 @@
 
 import * as PhotoSwipe from 'photoswipe';
+import { InjectionToken } from '@angular/core';
 export const DefaultLightboxOptions: PhotoSwipe.Options = {
-	allowPanToNext:true,
+	allowPanToNext: true,
 	spacing: 0.12,
 	bgOpacity: 1,
 	mouseUsed: false,
@@ -21,6 +22,8 @@ export const DefaultLightboxOptions: PhotoSwipe.Options = {
 }
 
 export interface LightboxToken {
-    default: PhotoSwipe.Options;
-    options: Partial<PhotoSwipe.Options>;
-  }
+	default: PhotoSwipe.Options;
+	options: Partial<PhotoSwipe.Options>;
+}
+
+export const LIGHTBOX_TOKEN = new InjectionToken<LightboxToken>('LightboxToken')
