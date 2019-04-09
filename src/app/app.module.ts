@@ -12,7 +12,7 @@ import { AppComponent } from './app.component';
   ],
   imports: [
     BrowserModule,
-    Angular2PhotoswipeModule.forRoot({}),
+    Angular2PhotoswipeModule.forRoot({hideAnimationDuration: 5000}),
   ],
   providers: [],
   bootstrap: [AppComponent]
