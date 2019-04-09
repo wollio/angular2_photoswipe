@@ -19,11 +19,13 @@ export class GalleryComponent implements AfterContentInit, OnDestroy {
 
   id: String = 'sampleId';
   subscriptions: Subscription[] = [];
+  options: PhotoSwipe.Options;
 
   images: Image[];
 
   constructor(private ngp: NgpService) {
     this.images = [];
+    this.options = Object.assign(ngp.getOptions().default, ngp.getOptions().options);
   }
 
   ngAfterContentInit() {
@@ -43,20 +45,18 @@ export class GalleryComponent implements AfterContentInit, OnDestroy {
   }
 
   private openPhotoSwipe(img: Image, galleryDOM: ElementRef): boolean {
-    const options: PhotoSwipe.Options = {
-      addCaptionHTMLFn: function (item, captionEl, isFake) {
-        if (!item.title) {
-          captionEl.children[0].innerHTML = '';
-          return false;
-        }
-        captionEl.children[0].innerHTML = item.title;
-        return true;
-      },
-    };
-    options.galleryUID = galleryDOM.nativeElement.getAttribute('data-pswp-uid');
-    options.index = img.id;
+    this.options.addCaptionHTMLFn = function (item, captionEl, isFake) {
+      if (!item.title) {
+        captionEl.children[0].innerHTML = '';
+        return false;
+      }
+      captionEl.children[0].innerHTML = item.title;
+      return true;
+    },
+      this.options.galleryUID = galleryDOM.nativeElement.getAttribute('data-pswp-uid');
+    this.options.index = img.id;
     const PSWP: HTMLElement = <HTMLElement>this.ngp.LightboxElement.nativeElement;
-    new PhotoSwipe(PSWP, PhotoSwipeUI_Default, this.getImagesAsPhotoswipe(), options).init();
+    new PhotoSwipe(PSWP, PhotoSwipeUI_Default, this.getImagesAsPhotoswipe(), this.options).init();
     return false;
   }
 
