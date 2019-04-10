@@ -5,7 +5,6 @@ import { NgModule } from '@angular/core';
 import { Angular2PhotoswipeModule, LightBoxAdapter } from 'angular2_photoswipe';
 
 import { AppComponent } from './app.component';
-import { CustomLightboxAdapter } from './custom-lightbox-adapter';
 
 @NgModule({
   declarations: [
