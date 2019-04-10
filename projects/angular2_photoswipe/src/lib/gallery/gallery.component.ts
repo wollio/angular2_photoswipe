@@ -6,7 +6,9 @@ import { GalleryItemComponent } from '../gallery-item/gallery-item.component';
 import { Image } from '../image';
 import { NgpService } from '../ngp.service';
 import { Subscription } from 'rxjs';
-import { LIGHTBOX_TOKEN, LightboxToken } from '../default-lightbox-options';
+
+import { LightboxOptions } from '../lightbox-options';
+import { LightBoxAdapter } from '../lightbox-adapter';
 
 @Component({
   selector: 'ngp-gallery',
@@ -20,13 +22,13 @@ export class GalleryComponent implements AfterContentInit, OnDestroy {
 
   id: String = 'sampleId';
   subscriptions: Subscription[] = [];
-  options: PhotoSwipe.Options;
+  options: LightboxOptions;
 
   images: Image[];
 
-  constructor(private ngp: NgpService, @Inject(LIGHTBOX_TOKEN) readonly token: LightboxToken) {
+  constructor(private ngp: NgpService, private adapter: LightBoxAdapter) {
     this.images = [];
-    this.options = Object.assign(token.default, token.options);
+    console.log(adapter);
   }
 
   ngAfterContentInit() {
@@ -46,18 +48,10 @@ export class GalleryComponent implements AfterContentInit, OnDestroy {
   }
 
   private openPhotoSwipe(img: Image, galleryDOM: ElementRef): boolean {
-    this.options.addCaptionHTMLFn = function (item, captionEl, isFake) {
-      if (!item.title) {
-        captionEl.children[0].innerHTML = '';
-        return false;
-      }
-      captionEl.children[0].innerHTML = item.title;
-      return true;
-    },
-      this.options.galleryUID = galleryDOM.nativeElement.getAttribute('data-pswp-uid');
-    this.options.index = img.id;
+    this.adapter.galleryUID = galleryDOM.nativeElement.getAttribute('data-pswp-uid');
+    this.adapter.index = img.id;
     const PSWP: HTMLElement = <HTMLElement>this.ngp.LightboxElement.nativeElement;
-    new PhotoSwipe(PSWP, PhotoSwipeUI_Default, this.getImagesAsPhotoswipe(), this.options).init();
+    new PhotoSwipe(PSWP, PhotoSwipeUI_Default, this.getImagesAsPhotoswipe(), this.adapter).init();
     return false;
   }
 

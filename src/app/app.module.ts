@@ -2,9 +2,10 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
 // ADD this
-import { Angular2PhotoswipeModule } from 'angular2_photoswipe';
+import { Angular2PhotoswipeModule, LightBoxAdapter } from 'angular2_photoswipe';
 
 import { AppComponent } from './app.component';
+import { CustomLightboxAdapter } from './custom-lightbox-adapter';
 
 @NgModule({
   declarations: [
@@ -12,9 +13,9 @@ import { AppComponent } from './app.component';
   ],
   imports: [
     BrowserModule,
-    Angular2PhotoswipeModule.forRoot({hideAnimationDuration: 5000}),
+    Angular2PhotoswipeModule,
   ],
-  providers: [],
+  // Custom Options providers: [{provide : LightBoxAdapter, useClass : CustomLightboxAdapter}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
