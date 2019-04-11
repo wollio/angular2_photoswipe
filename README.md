@@ -92,27 +92,25 @@ this.image1.thumbUrl = 'https://picsum.photos/300/200/?image=1';
 import {Angular2PhotoswipeModule} from 'angular2_photoswipe';
  
 @NgModule({
-  ...
   imports: [
     BrowserModule,
     Angular2PhotoswipeModule,
   ],
+  //Custom LightboxAdapter
   providers: [
     {provide : LightBoxAdapter, useClass : CustomLightboxAdapter}
   ]
-  ...
 })
 export class AppModule {
-  ...
 }
 ```
 
 ```typescript 
 import { Injectable } from '@angular/core';
-import { LightBoxAdapter } from 'angular2_photoswipe';
+import { LightboxAdapter } from 'angular2_photoswipe';
 
 @Injectable()
-export class CustomLightboxAdapter extends LightBoxAdapter {
+export class CustomLightboxAdapter extends LightboxAdapter {
     allowPanToNext = true;
     spacing = 0.12;
     bgOpacity = 0.4;

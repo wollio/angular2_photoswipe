@@ -8,7 +8,7 @@ import { NgpService } from '../ngp.service';
 import { Subscription } from 'rxjs';
 
 import { LightboxOptions } from '../lightbox-options';
-import { LightBoxAdapter } from '../lightbox-adapter';
+import { LightboxAdapter } from '../lightbox-adapter';
 
 @Component({
   selector: 'ngp-gallery',
@@ -26,7 +26,7 @@ export class GalleryComponent implements AfterContentInit, OnDestroy {
 
   images: Image[];
 
-  constructor(private ngp: NgpService, private adapter: LightBoxAdapter) {
+  constructor(private ngp: NgpService, private adapter: LightboxAdapter) {
     this.images = [];
     console.log(adapter);
   }
