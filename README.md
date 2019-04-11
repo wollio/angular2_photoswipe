@@ -46,7 +46,7 @@ import {Angular2PhotoswipeModule} from 'angular2_photoswipe';
   ...
   imports: [
     BrowserModule,
-    Angular2PhotoswipeModule.forRoot({})
+    Angular2PhotoswipeModule
   ]
   ...
 })
