@@ -5,7 +5,7 @@ import { LightboxAdapter } from 'angular2_photoswipe';
 export class CustomLightboxAdapter extends LightboxAdapter {
     allowPanToNext = true;
     spacing = 0.12;
-    bgOpacity = 0.4;
+    bgOpacity = 0.8;
     mouseUsed = false;
     loop = true;
     pinchToClose = true;
@@ -16,4 +16,9 @@ export class CustomLightboxAdapter extends LightboxAdapter {
     showHideOpacity = false;
     escKey = true;
     arrowKeys = true;
+    shareEl = true;
+    
+    getPageURLForShare = function(shareButtonData) {
+        return window.location.href;
+    }
 }

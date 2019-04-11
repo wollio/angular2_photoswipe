@@ -6,7 +6,12 @@ export function ANGULAR2_PHOTO_SWIPE_FACTORY() {
 }
 
 @Injectable({ providedIn: 'root', useFactory: ANGULAR2_PHOTO_SWIPE_FACTORY })
-export abstract class LightboxAdapter implements LightboxOptions {
+export abstract class LightboxAdapter implements LightboxOptions, LightboxMethods {
+    getThumbBoundsFn: Function;
+    getDoubleTapZoom: Function;
+    isClickableElement: Function;
+    addCaptionHTMLFn: Function;
+    
     index: number;
     showHideOpacity: boolean;
     showAnimationDuration: number;
@@ -38,9 +43,9 @@ export abstract class LightboxAdapter implements LightboxOptions {
     counterEl: boolean;
     arrowEl: boolean;
     preloaderEl: boolean;
-    tapToClose: false;
-    tapToToggleControls: true;
-    clickToCloseNonZoomable: true;
+    tapToClose: boolean;
+    tapToToggleControls: boolean;
+    clickToCloseNonZoomable: boolean;
     closeElClasses: string[];
     indexIndicatorSep: string;
     shareButtons: ShareButton[];
