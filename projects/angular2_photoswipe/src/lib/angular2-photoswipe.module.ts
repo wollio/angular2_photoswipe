@@ -10,5 +10,4 @@ export { LightBoxAdapter } from './lightbox-adapter';
   exports: [LightboxComponent, GalleryComponent, GalleryItemComponent]
 })
 export class Angular2PhotoswipeModule {
-ss
 }
