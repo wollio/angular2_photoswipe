@@ -6,7 +6,7 @@ export function ANGULAR2_PHOTO_SWIPE_FACTORY() {
 }
 
 @Injectable({ providedIn: 'root', useFactory: ANGULAR2_PHOTO_SWIPE_FACTORY })
-export abstract class LightBoxAdapter implements LightboxOptions {
+export abstract class LightboxAdapter implements LightboxOptions {
     index: number;
     showHideOpacity: boolean;
     showAnimationDuration: number;
@@ -47,7 +47,7 @@ export abstract class LightBoxAdapter implements LightboxOptions {
 }
 
 @Injectable()
-export class DefaultLightboxAdapter extends LightBoxAdapter {
+export class DefaultLightboxAdapter extends LightboxAdapter {
     allowPanToNext = true;
     spacing = 0.12;
     bgOpacity = 1.0;
