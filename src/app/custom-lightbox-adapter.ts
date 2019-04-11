@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
-import { LightBoxAdapter } from 'angular2_photoswipe';
+import { LightboxAdapter } from 'angular2_photoswipe';
 
 @Injectable()
-export class CustomLightboxAdapter extends LightBoxAdapter {
+export class CustomLightboxAdapter extends LightboxAdapter {
     allowPanToNext = true;
     spacing = 0.12;
     bgOpacity = 0.4;
