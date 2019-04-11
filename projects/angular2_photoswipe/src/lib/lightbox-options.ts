@@ -54,24 +54,24 @@ export interface LightboxOptions {
     loadingIndicatorDelay: number;
 
     // Buttons/elements
-    closeEl: boolean,
-    captionEl: boolean,
-    fullscreenEl: boolean,
-    zoomEl: boolean,
-    shareEl: boolean,
-    counterEl: boolean,
-    arrowEl: boolean,
-    preloaderEl: boolean,
+    closeEl: boolean;
+    captionEl: boolean;
+    fullscreenEl: boolean;
+    zoomEl: boolean;
+    shareEl: boolean;
+    counterEl: boolean;
+    arrowEl: boolean;
+    preloaderEl: boolean;
 
     // Tap on sliding area should close gallery
-    tapToClose: false,
+    tapToClose: boolean;
 
     // Tap should toggle visibility of controls
-    tapToToggleControls: true,
+    tapToToggleControls: boolean;
 
     // Mouse click on image should close the gallery,
     // only when image is smaller than size of the viewport
-    clickToCloseNonZoomable: true,
+    clickToCloseNonZoomable: boolean;
 
     // Element classes click on which should close the PhotoSwipe.
     // In HTML markup, class should always start with "pswp__", e.g.: "pswp__item", "pswp__caption".
@@ -92,7 +92,7 @@ export interface LightboxOptions {
     // {{text}}            - title
     // {{image_url}}       - encoded image url
     // {{raw_image_url}}   - raw image url
-    shareButtons: ShareButton[],
+    shareButtons: ShareButton[];
 }
 
 export interface ShareButton {
