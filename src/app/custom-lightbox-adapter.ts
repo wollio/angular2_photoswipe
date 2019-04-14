@@ -17,8 +17,7 @@ export class CustomLightboxAdapter extends LightboxAdapter {
     escKey = true;
     arrowKeys = true;
     shareEl = true;
-    
     getPageURLForShare = function(shareButtonData) {
         return window.location.href;
-    }
+    };
 }

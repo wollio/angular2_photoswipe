@@ -1,4 +1,4 @@
-import { LightboxOptions, LightboxMethods, ShareButton } from "./lightbox-options";
+import { LightboxOptions, LightboxMethods, ShareButton, CustomOptions } from "./lightbox-options";
 import { Injectable } from '@angular/core';
 
 export function ANGULAR2_PHOTO_SWIPE_FACTORY() {
@@ -6,7 +6,7 @@ export function ANGULAR2_PHOTO_SWIPE_FACTORY() {
 }
 
 @Injectable({ providedIn: 'root', useFactory: ANGULAR2_PHOTO_SWIPE_FACTORY })
-export abstract class LightboxAdapter implements LightboxOptions, LightboxMethods {
+export abstract class LightboxAdapter implements LightboxOptions, LightboxMethods, CustomOptions {
     getThumbBoundsFn: Function;
     getDoubleTapZoom: Function;
     isClickableElement: Function;
@@ -49,6 +49,7 @@ export abstract class LightboxAdapter implements LightboxOptions, LightboxMethod
     closeElClasses: string[];
     indexIndicatorSep: string;
     shareButtons: ShareButton[];
+    enableBootstrap4: boolean;
 }
 
 @Injectable()
@@ -66,4 +67,5 @@ export class DefaultLightboxAdapter extends LightboxAdapter {
     showHideOpacity = false;
     escKey = true;
     arrowKeys = true;
+    enableBootstrap4: false;
 }
