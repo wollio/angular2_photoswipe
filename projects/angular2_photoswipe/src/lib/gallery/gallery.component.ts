@@ -22,13 +22,13 @@ export class GalleryComponent implements AfterContentInit, OnDestroy {
 
   id: String = 'sampleId';
   subscriptions: Subscription[] = [];
-  options: LightboxOptions;
+  isBootstrapEnabled: boolean;
 
   images: Image[];
 
   constructor(private ngp: NgpService, private adapter: LightboxAdapter) {
     this.images = [];
-    console.log(adapter);
+    this.isBootstrapEnabled = this.adapter.enableBootstrap4;
   }
 
   ngAfterContentInit() {

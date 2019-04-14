@@ -107,3 +107,7 @@ export interface LightboxMethods {
     isClickableElement: Function;
     addCaptionHTMLFn: Function;
 }
+
+export interface CustomOptions {
+    enableBootstrap4: boolean;
+}
