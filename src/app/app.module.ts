@@ -2,7 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
 // ADD this
-import { Angular2PhotoswipeModule } from 'angular2_photoswipe';
+import { Angular2PhotoswipeModule} from 'angular2_photoswipe';
 
 import { AppComponent } from './app.component';
 
@@ -12,9 +12,8 @@ import { AppComponent } from './app.component';
   ],
   imports: [
     BrowserModule,
-    Angular2PhotoswipeModule // ADD this
+    Angular2PhotoswipeModule,
   ],
-  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

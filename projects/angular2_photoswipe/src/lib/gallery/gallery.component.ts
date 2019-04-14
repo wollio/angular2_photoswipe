@@ -1,38 +1,46 @@
-import { Component, ContentChildren, AfterContentInit, QueryList, ViewChild, ElementRef } from '@angular/core';
+import { Component, ContentChildren, AfterContentInit, QueryList, ViewChild, ElementRef, OnDestroy, Inject } from '@angular/core';
 import * as PhotoSwipe from 'photoswipe';
 import * as PhotoSwipeUI_Default from 'photoswipe/dist/photoswipe-ui-default'
 
 import { GalleryItemComponent } from '../gallery-item/gallery-item.component';
 import { Image } from '../image';
 import { NgpService } from '../ngp.service';
+import { Subscription } from 'rxjs';
+
+import { LightboxOptions } from '../lightbox-options';
+import { LightboxAdapter } from '../lightbox-adapter';
 
 @Component({
   selector: 'ngp-gallery',
   templateUrl: './gallery.component.html',
   styleUrls: ['./gallery.component.css']
 })
-export class GalleryComponent implements AfterContentInit {
+export class GalleryComponent implements AfterContentInit, OnDestroy {
 
   @ViewChild('ngpGallery') galleryElement: ElementRef;
   @ContentChildren(GalleryItemComponent) galleryItems: QueryList<GalleryItemComponent>
 
   id: String = 'sampleId';
+  subscriptions: Subscription[] = [];
+  options: LightboxOptions;
 
   images: Image[];
 
-  constructor(private ngp: NgpService) {
+  constructor(private ngp: NgpService, private adapter: LightboxAdapter) {
     this.images = [];
+    console.log(adapter);
   }
 
   ngAfterContentInit() {
-    this.galleryItems.toArray().forEach(cp => {
-      this.images.push(cp.image);
-
+    this.images = <any>this.galleryItems.toArray().map(cp => {
       // listen for clicks;
-      cp.clicked.subscribe((data) => {
-        this.onClick(data);
-      });
+      this.subscriptions.push(cp.clicked.subscribe((data) => this.onClick(data)));
+      return cp.image;
     });
+  }
+
+  ngOnDestroy() {
+    this.subscriptions.forEach(sub => sub.unsubscribe());
   }
 
   onClick(data) {
@@ -40,36 +48,24 @@ export class GalleryComponent implements AfterContentInit {
   }
 
   private openPhotoSwipe(img: Image, galleryDOM: ElementRef): boolean {
-    const options: PhotoSwipe.Options = {
-      addCaptionHTMLFn: function(item, captionEl, isFake) {
-          if (!item.title) {
-              captionEl.children[0].innerHTML = '';
-              return false;
-          }
-          captionEl.children[0].innerHTML = item.title;
-          return true;
-      },
-    };
-    options.galleryUID = galleryDOM.nativeElement.getAttribute('data-pswp-uid');
-    options.index = img.id;
-    const PSWP: HTMLElement = <HTMLElement> this.ngp.LightboxElement.nativeElement;
-    new PhotoSwipe(PSWP, PhotoSwipeUI_Default, this.getImagesAsPhotoswipe(), options).init();
+    this.adapter.galleryUID = galleryDOM.nativeElement.getAttribute('data-pswp-uid');
+    this.adapter.index = img.id;
+    const PSWP: HTMLElement = <HTMLElement>this.ngp.LightboxElement.nativeElement;
+    new PhotoSwipe(PSWP, PhotoSwipeUI_Default, this.getImagesAsPhotoswipe(), this.adapter).init();
     return false;
   }
 
   private getImagesAsPhotoswipe(): any[] {
-    const items: any[] = [];
-    this.images.forEach(image => {
-      items.push({
-          src: image.largeUrl,
-          w: image.width,
-          h: image.height,
-          pid: image.id,
-          title: image.description,
-          author: image.author
-      });
+    return this.images.map(image => {
+      return {
+        src: image.largeUrl,
+        w: image.width,
+        h: image.height,
+        pid: image.id,
+        title: image.description,
+        author: image.author
+      };
     });
-    return items;
-  }
 
+  }
 }

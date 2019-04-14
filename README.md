@@ -14,7 +14,6 @@ This library supports SSR. (Tested with [Angular Universal Starter](https://gith
 ## Installation
 ##### Install NPM packages
 ```bash
-npm install --save photoswipe
 npm install --save angular2_photoswipe
 ```
 
@@ -87,6 +86,51 @@ this.image1.id = 0;
 this.image1.size = `${this.image1.width}x${this.image1.height}`;
 this.image1.thumbUrl = 'https://picsum.photos/300/200/?image=1'; 
 ```
+
+##### Custom Options Adapter
+```typescript
+import {Angular2PhotoswipeModule} from 'angular2_photoswipe';
+ 
+@NgModule({
+  imports: [
+    BrowserModule,
+    Angular2PhotoswipeModule,
+  ],
+  //Custom LightboxAdapter
+  providers: [
+    {provide : LightBoxAdapter, useClass : CustomLightboxAdapter}
+  ]
+})
+export class AppModule {
+}
+```
+
+```typescript 
+import { Injectable } from '@angular/core';
+import { LightboxAdapter } from 'angular2_photoswipe';
+
+@Injectable()
+export class CustomLightboxAdapter extends LightboxAdapter {
+    allowPanToNext = true;
+    spacing = 0.12;
+    bgOpacity = 0.4;
+    mouseUsed = false;
+    loop = true;
+    pinchToClose = true;
+    closeOnScroll = true;
+    closeOnVerticalDrag = true;
+    hideAnimationDuration = 333;
+    showAnimationDuration = 333;
+    showHideOpacity = false;
+    escKey = true;
+    arrowKeys = true;
+    
+    getPageURLForShare = function(shareButtonData) {
+        return window.location.href;
+    }
+}
+```
+
 
 ## Demo
 
