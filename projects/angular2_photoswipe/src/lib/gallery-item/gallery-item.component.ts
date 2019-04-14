@@ -7,8 +7,8 @@ import { Image } from '../image';
   styleUrls: ['./gallery-item.component.css']
 })
 export class GalleryItemComponent {
-  
-  @Input('image') image:Image;
+
+  @Input('image') image: Image;
   @Output() clicked = new EventEmitter<Image>();
 
   constructor() {
