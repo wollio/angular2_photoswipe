@@ -125,10 +125,9 @@ export class CustomLightboxAdapter extends LightboxAdapter {
     showHideOpacity = false;
     escKey = true;
     arrowKeys = true;
-    
     getPageURLForShare = function(shareButtonData) {
         return window.location.href;
-    }
+    };
 }
 ```
 
