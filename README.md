@@ -14,6 +14,7 @@ This library supports SSR. (Tested with [Angular Universal Starter](https://gith
 ## Installation
 ##### Install NPM packages
 ```bash
+npm install --save photoswipe
 npm install --save angular2_photoswipe
 ```
 
