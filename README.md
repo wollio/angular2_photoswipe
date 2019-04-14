@@ -131,6 +131,29 @@ export class CustomLightboxAdapter extends LightboxAdapter {
 }
 ```
 
+##### Bootstrap 4 support
+```typescript 
+import { Injectable } from '@angular/core';
+import { LightboxAdapter } from 'angular2_photoswipe';
+
+@Injectable()
+export class CustomLightboxAdapter extends LightboxAdapter {
+       enableBootstrap4 = true;
+}
+```
+
+###### configure card count
+```scss 
+.card-columns {
+  @include media-breakpoint-only(lg) {
+    column-count: 4;
+  }
+  @include media-breakpoint-only(xl) {
+    column-count: 5;
+  }
+}
+```
+
 
 ## Demo
 
