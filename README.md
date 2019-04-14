@@ -89,7 +89,7 @@ this.image1.thumbUrl = 'https://picsum.photos/300/200/?image=1';
 
 ##### Custom Options Adapter
 ```typescript
-import {Angular2PhotoswipeModule} from 'angular2_photoswipe';
+import {Angular2PhotoswipeModule, LightboxAdapter} from 'angular2_photoswipe';
  
 @NgModule({
   imports: [
@@ -98,7 +98,7 @@ import {Angular2PhotoswipeModule} from 'angular2_photoswipe';
   ],
   //Custom LightboxAdapter
   providers: [
-    {provide : LightBoxAdapter, useClass : CustomLightboxAdapter}
+    {provide : LightboxAdapter, useClass : CustomLightboxAdapter}
   ]
 })
 export class AppModule {
