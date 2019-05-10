@@ -67,7 +67,7 @@ Place the `npg-lightbox` somewhere in your layout.
 Add the `ngp-gallery` and the `ngp-gallery-item` in your component html. 
 
 ```html
-<ngp-gallery>
+<ngp-gallery [galleryId]="sampleId">
   <ngp-gallery-item [image]="image1"></ngp-gallery-item>
   <ngp-gallery-item [image]="image2"></ngp-gallery-item>
 </ngp-gallery>
