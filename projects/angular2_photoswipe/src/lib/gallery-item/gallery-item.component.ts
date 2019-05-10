@@ -9,7 +9,7 @@ import { LightboxAdapter } from '../lightbox-adapter';
 })
 export class GalleryItemComponent {
 
-  @Input('image') image: Image;
+  @Input() image: Image;
   @Output() clicked = new EventEmitter<Image>();
   @HostBinding('class.card') isBootstrapEnabled: boolean = false;
 

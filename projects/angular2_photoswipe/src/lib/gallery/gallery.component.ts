@@ -1,4 +1,4 @@
-import { Component, ContentChildren, AfterContentInit, QueryList, ViewChild, ElementRef, OnDestroy, Inject } from '@angular/core';
+import { Component, ContentChildren, AfterContentInit, QueryList, ViewChild, ElementRef, OnDestroy, Inject, Input, OnInit, OnChanges } from '@angular/core';
 import * as PhotoSwipe from 'photoswipe';
 import * as PhotoSwipeUI_Default from 'photoswipe/dist/photoswipe-ui-default'
 
@@ -19,8 +19,8 @@ export class GalleryComponent implements AfterContentInit, OnDestroy {
 
   @ViewChild('ngpGallery') galleryElement: ElementRef;
   @ContentChildren(GalleryItemComponent) galleryItems: QueryList<GalleryItemComponent>
+  @Input() galleryId: string;
 
-  id: String = 'sampleId';
   subscriptions: Subscription[] = [];
   isBootstrapEnabled: boolean;
 
