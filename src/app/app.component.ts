@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Image } from 'angular2_photoswipe';
 
 @Component({
@@ -6,12 +6,15 @@ import { Image } from 'angular2_photoswipe';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent {
+export class AppComponent implements OnInit{
   title = 'angular2-photoswipe-demo';
   image1: Image;
   image2: Image;
 
   constructor() {
+  }
+
+  ngOnInit(){
     this.image1 = new Image();
     this.image1.largeUrl = 'https://picsum.photos/4934/3296/?image=1';
     this.image1.height = 3296;
