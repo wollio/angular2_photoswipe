@@ -1,6 +1,5 @@
-<ngp-gallery [galleryId]="sampleId">
+<ngp-gallery (shareLinkClick)="buttonClick($event)" [galleryId]="sampleId">
   <ngp-gallery-item [image]="image1"></ngp-gallery-item>
   <ngp-gallery-item [image]="image2"></ngp-gallery-item>
 </ngp-gallery>
-
 <ngp-lightbox ></ngp-lightbox>

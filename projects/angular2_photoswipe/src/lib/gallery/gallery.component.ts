@@ -1,6 +1,6 @@
-import { Component, ContentChildren, AfterContentInit, QueryList, ViewChild, ElementRef, OnDestroy, Inject, Input, OnInit, OnChanges } from '@angular/core';
+import { Component, ContentChildren, AfterContentInit, QueryList, ViewChild, ElementRef, OnDestroy, EventEmitter, Input, Output } from '@angular/core';
 import * as PhotoSwipe from 'photoswipe';
-import * as PhotoSwipeUI_Default from 'photoswipe/dist/photoswipe-ui-default'
+import * as PhotoSwipeUI_Default from 'photoswipe/dist/photoswipe-ui-default';
 
 import { GalleryItemComponent } from '../gallery-item/gallery-item.component';
 import { Image } from '../image';
@@ -17,12 +17,14 @@ import { LightboxAdapter } from '../lightbox-adapter';
 })
 export class GalleryComponent implements AfterContentInit, OnDestroy {
 
-  @ViewChild('ngpGallery') galleryElement: ElementRef;
-  @ContentChildren(GalleryItemComponent) galleryItems: QueryList<GalleryItemComponent>
+  @ViewChild('ngpGallery', { static: true }) galleryElement: ElementRef<HTMLDivElement>;
+  @ContentChildren(GalleryItemComponent) galleryItems: QueryList<GalleryItemComponent>;
   @Input() galleryId: string;
+  @Output() shareLinkClick: EventEmitter<{ e: Event, target: HTMLElement }> = new EventEmitter();
 
   subscriptions: Subscription[] = [];
   isBootstrapEnabled: boolean;
+  pswp: PhotoSwipe;
 
   images: Image[];
 
@@ -51,7 +53,12 @@ export class GalleryComponent implements AfterContentInit, OnDestroy {
     this.adapter.galleryUID = galleryDOM.nativeElement.getAttribute('data-pswp-uid');
     this.adapter.index = img.id;
     const PSWP: HTMLElement = <HTMLElement>this.ngp.LightboxElement.nativeElement;
-    new PhotoSwipe(PSWP, PhotoSwipeUI_Default, this.getImagesAsPhotoswipe(), this.adapter).init();
+    this.pswp = new PhotoSwipe(PSWP, PhotoSwipeUI_Default, this.getImagesAsPhotoswipe(), this.adapter);
+    const _this = this;
+    this.pswp.listen('shareLinkClick', function (e, target) {
+      _this.shareLinkClick.emit({ e, target });
+    });
+    this.pswp.init();
     return false;
   }
 
