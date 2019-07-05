@@ -11,7 +11,7 @@ export abstract class LightboxAdapter implements LightboxOptions, LightboxMethod
     getDoubleTapZoom: Function;
     isClickableElement: Function;
     addCaptionHTMLFn: Function;
-    
+
     index: number;
     showHideOpacity: boolean;
     showAnimationDuration: number;
