@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { NgModule, InjectionToken } from '@angular/core';
 import { Angular2PhotoswipeComponent } from './angular2-photoswipe.component';
 import { LightboxComponent } from './lightbox/lightbox.component';
 import { GalleryComponent } from './gallery/gallery.component';

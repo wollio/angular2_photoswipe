@@ -1,4 +1,4 @@
-import { LightboxOptions, LightboxMethods, ShareButton, CustomOptions } from './lightbox-options';
+import { LightboxOptions, LightboxMethods, ShareButton, CustomOptions } from "./lightbox-options";
 import { Injectable } from '@angular/core';
 
 export function ANGULAR2_PHOTO_SWIPE_FACTORY() {
