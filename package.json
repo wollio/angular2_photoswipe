@@ -8,7 +8,7 @@
     "test": "echo 'no tests implemented yet'",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "build_lib": "ng build angular2-photoswipe",
+    "build_lib": "ng build angular2-photoswipe --prod",
     "copy-files": "cp ./README.md ./dist/angular2_photoswipe && cp ./LICENSE ./dist/angular2_photoswipe",
     "npm_pack": "cd dist/angular2_photoswipe && npm pack",
     "npm_publish": "cd dist/angular2_photoswipe && npm publish --access public"

@@ -19,7 +19,6 @@ import { Image } from '../image';
 import { NgpService } from '../ngp.service';
 import { Subscription } from 'rxjs';
 
-import { LightboxOptions } from '../lightbox-options';
 import { LightboxAdapter } from '../lightbox-adapter';
 import {debounce, Dimension} from './gallery.util';
 
@@ -67,7 +66,7 @@ export class GalleryComponent implements AfterContentInit, OnDestroy {
     this.openPhotoSwipe(data, this.galleryElement);
   }
 
-  @HostListener('window:resize', ['$event'])
+  @HostListener('window:resize')
   @debounce()
   onResize() {
     this.innerWidth = window.innerWidth;

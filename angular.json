@@ -141,8 +141,8 @@
           "options": {
             "tsConfig": "projects/angular2_photoswipe/tsconfig.lib.json",
             "project": "projects/angular2_photoswipe/ng-package.json"
-          }
-        ,          "configurations": {
+          },
+          "configurations": {
             "production": {
               "tsConfig": "projects/angular2_photoswipe/tsconfig.lib.prod.json"
             }
