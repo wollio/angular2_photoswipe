@@ -10,6 +10,7 @@ export class AppComponent implements OnInit {
   title = 'angular2-photoswipe-demo';
   image1: Image;
   image2: Image;
+  sampleId: string;
 
   constructor() {
   }
@@ -19,6 +20,8 @@ export class AppComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.sampleId = 'sampleId';
+
     this.image1 = new Image();
     this.image1.largeUrl = 'https://picsum.photos/4934/3296/?image=1';
     this.image1.height = 3296;
