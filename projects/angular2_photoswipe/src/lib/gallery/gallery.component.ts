@@ -1,4 +1,16 @@
-import { Component, ContentChildren, AfterContentInit, QueryList, ViewChild, ElementRef, OnDestroy, EventEmitter, Input, Output } from '@angular/core';
+import {
+  Component,
+  ContentChildren,
+  AfterContentInit,
+  QueryList,
+  ViewChild,
+  ElementRef,
+  OnDestroy,
+  EventEmitter,
+  Input,
+  Output,
+  HostListener
+} from '@angular/core';
 import * as PhotoSwipe from 'photoswipe';
 import * as PhotoSwipeUI_Default from 'photoswipe/dist/photoswipe-ui-default';
 
@@ -9,9 +21,10 @@ import { Subscription } from 'rxjs';
 
 import { LightboxOptions } from '../lightbox-options';
 import { LightboxAdapter } from '../lightbox-adapter';
+import {debounce, Dimension} from './gallery.util';
 
 @Component({
-  selector: 'ngp-gallery',
+  selector: 'a2p-gallery',
   templateUrl: './gallery.component.html',
   styleUrls: ['./gallery.component.css']
 })
@@ -20,7 +33,10 @@ export class GalleryComponent implements AfterContentInit, OnDestroy {
   @ViewChild('ngpGallery', { static: true }) galleryElement: ElementRef<HTMLDivElement>;
   @ContentChildren(GalleryItemComponent) galleryItems: QueryList<GalleryItemComponent>;
   @Input() galleryId: string;
+  @Input() autoFill = false;
   @Output() shareLinkClick: EventEmitter<{ e: Event, target: HTMLElement }> = new EventEmitter();
+  private innerWidth: number;
+  private innerHeight: number;
 
   subscriptions: Subscription[] = [];
   isBootstrapEnabled: boolean;
@@ -34,6 +50,8 @@ export class GalleryComponent implements AfterContentInit, OnDestroy {
   }
 
   ngAfterContentInit() {
+    this.innerWidth = window.innerWidth;
+    this.innerHeight = window.innerHeight;
     this.images = <any>this.galleryItems.toArray().map(cp => {
       // listen for clicks;
       this.subscriptions.push(cp.clicked.subscribe((data) => this.onClick(data)));
@@ -49,6 +67,13 @@ export class GalleryComponent implements AfterContentInit, OnDestroy {
     this.openPhotoSwipe(data, this.galleryElement);
   }
 
+  @HostListener('window:resize', ['$event'])
+  @debounce()
+  onResize() {
+    this.innerWidth = window.innerWidth;
+    this.innerHeight = window.innerHeight;
+  }
+
   private openPhotoSwipe(img: Image, galleryDOM: ElementRef): boolean {
     this.adapter.galleryUID = galleryDOM.nativeElement.getAttribute('data-pswp-uid');
     this.adapter.index = img.id;
@@ -62,12 +87,30 @@ export class GalleryComponent implements AfterContentInit, OnDestroy {
     return false;
   }
 
+  // If image is landscape or square, set width to window width and height to width * ratio
+  // If image is portrait, set height to window height and width to height / ratio
+  private getImageDimensions(w: number, h: number): Dimension {
+    const ratio = h / w;
+    if (w >= h) {
+      return {
+        width : this.innerWidth,
+        height: this.innerWidth * ratio
+      };
+    } else {
+      return {
+        width : this.innerHeight / ratio,
+        height: this.innerHeight
+      };
+    }
+  }
+
   private getImagesAsPhotoswipe(): any[] {
     return this.images.map(image => {
+      const imgDimensions = this.autoFill ? this.getImageDimensions(image.width, image.height) : {width: image.width, height: image.height};
       return {
         src: image.largeUrl,
-        w: image.width,
-        h: image.height,
+        w: imgDimensions.width,
+        h: imgDimensions.height,
         pid: image.id,
         title: image.description,
         author: image.author

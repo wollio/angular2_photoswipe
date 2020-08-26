@@ -23,14 +23,14 @@ export interface LightboxOptions {
 
     closeOnVerticalDrag: boolean;
 
-    mouseUsed: boolean
+    mouseUsed: boolean;
 
-    escKey: boolean
+    escKey: boolean;
 
     arrowKeys: boolean;
-    history: boolean
+    history: boolean;
 
-    galleryUID: number
+    galleryUID: number;
     galleryPIDs: boolean;
 
 
@@ -38,9 +38,9 @@ export interface LightboxOptions {
 
     // Size of top & bottom bars in pixels,
     // "bottom" parameter can be 'auto' (will calculate height of caption)
-    // option applies only when mouse is used, 
+    // option applies only when mouse is used,
     // or width of screen is more than 1200px
-    // 
+    //
     // (Also refer to `parseVerticalMargin` event)
     barsSize: Object;
 
@@ -75,7 +75,7 @@ export interface LightboxOptions {
 
     // Element classes click on which should close the PhotoSwipe.
     // In HTML markup, class should always start with "pswp__", e.g.: "pswp__item", "pswp__caption".
-    // 
+    //
     // "pswp__ui--over-close" class will be added to root element of UI when mouse is over one of these elements
     // By default it's used to highlight the close button.
     closeElClasses: string[];
@@ -86,7 +86,7 @@ export interface LightboxOptions {
 
 
     // Share buttons
-    // 
+    //
     // Available variables for URL:
     // {{url}}             - url to current page
     // {{text}}            - title

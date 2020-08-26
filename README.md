@@ -67,10 +67,10 @@ Place the `npg-lightbox` somewhere in your layout.
 Add the `ngp-gallery` and the `ngp-gallery-item` in your component html. 
 
 ```html
-<ngp-gallery [galleryId]="sampleId">
+<a2p-gallery [galleryId]="sampleId">
   <ngp-gallery-item [image]="image1"></ngp-gallery-item>
   <ngp-gallery-item [image]="image2"></ngp-gallery-item>
-</ngp-gallery>
+</a2p-gallery>
 ```
 
 ##### Load images in component
@@ -154,6 +154,14 @@ export class CustomLightboxAdapter extends LightboxAdapter {
 }
 ```
 
+###### autofill: stretch smaller images to fill the screen
+By default photoswipe does not stretch images to fill the screen. When working with smaller images this can be undesirable. Use `[autoFill]="true"` to stretch smaller images.
+```html
+<a2p-gallery [galleryId]="sampleId" [autoFill]="true">
+  <ngp-gallery-item [image]="image1"></ngp-gallery-item>
+  <ngp-gallery-item [image]="image2"></ngp-gallery-item>
+</a2p-gallery>
+```
 
 ## Demo
 
