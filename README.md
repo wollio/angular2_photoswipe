@@ -155,7 +155,7 @@ export class CustomLightboxAdapter extends LightboxAdapter {
 ```
 
 ###### autofill: stretch smaller images to fill the screen
-By default photoswipe does not stretch images to fill the screen. When working with smaller images this can be undesirable. Use [autoFill]="true" to stretch smaller images.
+By default photoswipe does not stretch images to fill the screen. When working with smaller images this can be undesirable. Use `[autoFill]="true"` to stretch smaller images.
 ```html
 <a2p-gallery [galleryId]="sampleId" [autoFill]="true">
   <ngp-gallery-item [image]="image1"></ngp-gallery-item>
