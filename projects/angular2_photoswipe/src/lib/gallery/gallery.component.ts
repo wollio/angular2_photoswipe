@@ -39,7 +39,7 @@ export class GalleryComponent implements AfterContentInit, OnDestroy {
 
   subscriptions: Subscription[] = [];
   isBootstrapEnabled: boolean;
-  pswp: PhotoSwipe;
+  pswp: PhotoSwipe<any>;
 
   images: Image[];
 
