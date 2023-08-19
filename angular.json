@@ -92,18 +92,6 @@
               "src/assets"
             ]
           }
-        },
-        "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
-          "options": {
-            "tsConfig": [
-              "src/tsconfig.app.json",
-              "src/tsconfig.spec.json"
-            ],
-            "exclude": [
-              "**/node_modules/**"
-            ]
-          }
         }
       }
     },
@@ -121,15 +109,6 @@
             "production": {
               "devServerTarget": "angular2-photoswipe-demo:serve:production"
             }
-          }
-        },
-        "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
-          "options": {
-            "tsConfig": "e2e/tsconfig.e2e.json",
-            "exclude": [
-              "**/node_modules/**"
-            ]
           }
         }
       }
@@ -158,18 +137,6 @@
             "main": "projects/angular2_photoswipe/src/test.ts",
             "tsConfig": "projects/angular2_photoswipe/tsconfig.spec.json",
             "karmaConfig": "projects/angular2_photoswipe/karma.conf.js"
-          }
-        },
-        "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
-          "options": {
-            "tsConfig": [
-              "projects/angular2_photoswipe/tsconfig.lib.json",
-              "projects/angular2_photoswipe/tsconfig.spec.json"
-            ],
-            "exclude": [
-              "**/node_modules/**"
-            ]
           }
         }
       }
