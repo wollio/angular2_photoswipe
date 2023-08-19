@@ -8,6 +8,7 @@
     "declaration": false,
     "module": "es2020",
     "moduleResolution": "node",
+    "esModuleInterop": true,
     "experimentalDecorators": true,
     "target": "es2015",
     "typeRoots": [

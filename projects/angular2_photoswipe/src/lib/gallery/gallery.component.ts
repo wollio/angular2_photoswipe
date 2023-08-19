@@ -11,8 +11,8 @@ import {
   Output,
   HostListener
 } from '@angular/core';
-import * as PhotoSwipe from 'photoswipe';
-import * as PhotoSwipeUI_Default from 'photoswipe/dist/photoswipe-ui-default';
+import PhotoSwipe from 'photoswipe';
+import PhotoSwipeUI_Default from 'photoswipe/dist/photoswipe-ui-default';
 
 import { GalleryItemComponent } from '../gallery-item/gallery-item.component';
 import { Image } from '../image';
