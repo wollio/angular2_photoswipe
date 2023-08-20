@@ -10,7 +10,7 @@
     "moduleResolution": "node",
     "esModuleInterop": true,
     "experimentalDecorators": true,
-    "target": "es2020",
+    "target": "ES2022",
     "typeRoots": [
       "node_modules/@types"
     ],
@@ -25,6 +25,7 @@
       "angular2_photoswipe/*": [
         "dist/angular2_photoswipe/*"
       ]
-    }
+    },
+    "useDefineForClassFields": false
   }
 }
