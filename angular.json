@@ -62,18 +62,18 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "angular2-photoswipe-demo:build"
+            "buildTarget": "angular2-photoswipe-demo:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "angular2-photoswipe-demo:build:production"
+              "buildTarget": "angular2-photoswipe-demo:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "angular2-photoswipe-demo:build"
+            "buildTarget": "angular2-photoswipe-demo:build"
           }
         },
         "test": {
